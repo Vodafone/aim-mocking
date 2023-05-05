@@ -12,28 +12,32 @@ The main benefit of using AIM over other tools is that it does not need mapping 
 
 [to be added]
 
+------
+
 ## Contents
 
 - [How AIM works](#how-aim-works)
-  - [Package structure]()
-  - [Playground]()
-- [Getting started]()
-  - [Requirements]()
-  - [Installation]()
-  - [Quick start]()
+  - [Package structure](#package-structure)
+  - [Playground](#playground)
+- [Getting started](#getting-started)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Quick start](#quick-start)
 - [Video tutorials??]()
-- [Examples]()
-- [Contributing]()
-- [People]()
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [People](#people)
 - [License](#license)
 - [to be added]
+
+------
 
 ## How AIM works
 
 When you make an API request, normally it would be proxied to your Back End server, and AIM basically sits in between. As long as AIM is disabled, it's not doing anything. Once it's enabled, there are few options to choose from:
-1. Mocking mode: API requests going to your Back End server are stopped, and mocked responses, which have been created or recorded previously, will be received. 
-2. Recording mode: API requests are allowed as usually, but returned responses will be also saved and stored in mock files, to be used for the future mocking.
-3. Disabled mode: application will continue working as usually without AIM.
+1. **Mocking mode**: API requests going to your Back End server are stopped, and mocked responses, which have been created or recorded previously, will be received. 
+2. **Recording mode**: API requests are allowed as usually, but returned responses will be also saved and stored in mock files, to be used for the future mocking.
+3. **Disabled mode**: application will continue working as usually without AIM.
 
 ***AIM doesn't allow using both modes at the same time to avoid confusion about which data is real and which is mocked.***
 
@@ -45,18 +49,16 @@ AIM is a different way of middleware, because you are passing application to it,
 
 At the moment, AIM is able to mock ***only JSON responses***.
 
-Session: allows multiple people to work on mock files with different data. AIM is recognizing who you are, based on the session of first connect, and it gives back same session later one. In-memory session.
+#### Some of most important features of AIM:
 
-ConfigController: dynamic configuration inside AIM.
-- all configs come from it
-- different configs for different users (session support)
-- handles configuration endpoints (health, mocking, recording etc.) - the one which can be modified by APIs.
-
-cache = mocks: AIM supports only cache interface.
-
-setupProxy: onProxyRequest and onProxyResponse - this is where AIM actually sits, to be able to manipulate requests and responses.
-
-cacheController: helps to return correct mocks.
+1. `session`: allows multiple people to work on mock files with different data. AIM is recognizing who you are, based on the session of first connect, and it gives back same in-memory session later one.
+2. `ConfigController`: dynamic configuration inside AIM.
+    - all configs come from it
+    - different configs for different users (session support)
+    - handles configuration endpoints (health, mocking, recording etc.) - the one which can be modified by APIs.
+3. `Cache` = mocks: AIM supports only cache interface.
+4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` - are the functions where AIM actually sits and is able to manipulate requests/responses and data.
+5. `cacheController`: helps to return correct mocks.
 
 ### Package structure
 
@@ -67,7 +69,9 @@ AIM is a NX monorepo, including 3 packages:
 
 ### Playground
 
-Run yarn start / tests will run. After start, it will run the scenarios which you can import to your Postman. Has some showcases how AIM works.
+Run `yarn start` will run the tests and the scenarios which you can import to your Postman. Has some showcases how AIM works.
+
+------
 
 ## Getting started
 
@@ -112,7 +116,7 @@ const app = express()
 Aim(app, yourConfig)
 ```
 
-Configuration - specific to your project, but it's not dynamic. AIM behaviour is controlled through API calls to AIM itself.
+Configuration - specific to your project. It's important to remember that it's not dynamic: AIM behaviour is controlled through API calls to AIM itself.
 
 ```
 export interface AimConfig {
