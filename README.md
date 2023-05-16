@@ -41,13 +41,15 @@ When you make an API request, normally it would be proxied to your Back End serv
 
 ***AIM doesn't allow using both modes at the same time to avoid confusion about which data is real and which is mocked.***
 
+In case of Mocking mode, if mocks don't exist, AIM will tell you how to fix the problem and what kind of file to create, and create mocks manually.
+
 [add a better picture of high level design on how AIM works]
 
 <img width="1292" alt="image" src="https://user-images.githubusercontent.com/78380665/236480054-2c95cc8d-52fb-4102-94fb-d44c0be85f27.png">
 
 AIM is a different way of middleware, because you are passing application to it, as it has to have a good control over it. If it would have been done in another way, setup would be much more complex, because AIM needs to proxy the requests. 
 
-At the moment, AIM is able to mock ***only JSON responses***.
+At the moment, AIM is able to mock ***only JSON responses***. Default response status for mocks is always 200, but it can be changed when needed.
 
 #### Some of most important features of AIM:
 
@@ -59,6 +61,21 @@ At the moment, AIM is able to mock ***only JSON responses***.
 3. `Cache` = mocks: AIM supports only cache interface.
 4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` - are the functions where AIM actually sits and is able to manipulate requests/responses and data.
 5. `cacheController`: helps to return correct mocks.
+
+```
+"__cacheMeta": {    // used for visualising body and query parameters for debugging purpose, main ingredients for the hash
+  "status": 400,    // can be modified
+  "delay": 5000,    // property in mocks to delay response time
+  "hash": {
+    "body": {},
+    "query": {}
+  }
+}
+```
+
+Mocking different scenarios [add a better picture]
+<img width="884" alt="image" src="https://github.com/Vodafone/aim-mocking/assets/78380665/57cd6954-720c-4dbe-a63d-5bdcf717ee1b">
+
 
 ### Package structure
 
