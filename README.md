@@ -2,9 +2,9 @@
 
 # AIM - Vodafone Mocking Service 
 
-AIM in short is an express based mocking middleware capable of mocking and recording APIs. It is only server-side, so it doesn't modify client side code, which also means that you don't have to bother if what is mocked is different from production or other environment. It should behave in the same way as your production environment.
+AIM in short is an express based mocking middleware capable of mocking and recording APIs. It is only server-side, so it doesn't modify client side code, so you don't have to bother if mocks are different from production or other environment - it should behave in the same way as your production environment.
 
-The main benefit of using AIM over other tools is that it does not need mapping files or written code to map your request and serve back the mock files - which leads to much lower maintenance cost. It is able to automatically detect which mock to return, depending on the request. 
+The main benefit of using AIM over other tools is that it does not need mapping files or written code to map your request and serve back the mock files, which leads to much lower maintenance cost. It is able to automatically detect which mock to return, depending on the request. 
 
 [update picture for mapping examples]
 
@@ -34,14 +34,14 @@ The main benefit of using AIM over other tools is that it does not need mapping 
 
 ## How AIM works
 
-When you make an API request, normally it would be proxied to your Back End server, and AIM basically sits in between. As long as AIM is disabled, it's not doing anything. Once it's enabled, there are few options to choose from:
-1. **Mocking mode**: API requests going to your Back End server are stopped, and mocked responses, which have been created or recorded previously, will be received. 
+When you make an API request, normally it would be proxied to your Back End server. AIM basically sits in between. As long as it is disabled, it's not doing anything. Once it's enabled, there are few options to choose from:
+1. **Disabled mode**: application will continue working as usually without AIM.
 2. **Recording mode**: API requests are allowed as usually, but returned responses will be also saved and stored in mock files, to be used for the future mocking.
-3. **Disabled mode**: application will continue working as usually without AIM.
+3. **Mocking mode**: API requests going to your Back End server are stopped, and mocked responses, which have been created or recorded previously, will be received. 
 
 ***AIM doesn't allow using both modes at the same time to avoid confusion about which data is real and which is mocked.***
 
-In case of Mocking mode, if mocks don't exist, AIM will tell you how to fix the problem and what kind of file to create, and create mocks manually.
+In case of Mocking mode, if mocks don't exist, AIM will provide guidelines on fixing the problem and which files to create, and/or create mocks manually.
 
 [add a better picture of high level design on how AIM works]
 
@@ -62,6 +62,8 @@ At the moment, AIM is able to mock ***only JSON responses***. Default response s
 4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` - are the functions where AIM actually sits and is able to manipulate requests/responses and data.
 5. `cacheController`: helps to return correct mocks.
 
+All mock responses can be recognised via `__cacheMeta` object added to response. Some of it's properties can be modified to provide better and more realisting mocking experience.
+
 ```
 "__cacheMeta": {    // used for visualising body and query parameters for debugging purpose, main ingredients for the hash
   "status": 400,    // can be modified
@@ -80,7 +82,7 @@ Mocking different scenarios [add a better picture]
 ### Package structure
 
 AIM is a NX monorepo, including 3 packages:
-- Core - main package, where AIM "sits
+- Core - main package, where AIM "sits"
 - Logger - custom built package, which provides AIM specific logs in terminal to get clear information about what is being done
 - Playground - place where you can test AIM.
 
@@ -102,7 +104,6 @@ If you prefer a code example visit the playground app here:
 - Node version >18.13.0
 - Both packages installed: `@vfuk/lib-web-aim` and `@vfuk/lib-aim-logger`
 
-[to be updated]
 
 ### Installation
 
@@ -117,7 +118,6 @@ With yarn:
 yarn add @vfuk/lib-web-aim @vfuk/lib-aim-logger
 ```
 
-[to be added]
 
 ### Quick Start
 
