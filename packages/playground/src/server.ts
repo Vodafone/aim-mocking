@@ -2,7 +2,7 @@ import newman from 'newman'
 import express from 'express'
 import proxy from 'express-http-proxy'
 
-import AimMiddleware from '@vfuk/lib-aim'
+import AimMiddleware from '@vfuk/lib-web-aim'
 import aimConfig from './aim.config'
 
 import collection from './AIM.postman_collection.json' assert { type: 'json' }

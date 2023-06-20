@@ -9,13 +9,17 @@
   "scripts": {
     "// Build commands": "=================================================================",
     "build:all": "nx run-many --target=build --all",
-    "// Test commands": "=================================================================",
-    "test:all": "nx run-many --target=test --all",
     "// Commit commands": "=================================================================",
     "prepare": "husky install",
     "// Linting commands": "=================================================================",
     "lint": "eslint --ext .ts,.tsx packages/",
-    "commit": "cz"
+    "commit": "cz",
+    "// Licenses": "=========================================================================",
+    "licenses:setup": "yarn install && yarn nx build @vfuk/lib-generate-licenses",
+    "licenses:generate:core": "node ./packages/licenses/dist/index.cjs get --root packages/core",
+    "licenses:generate:logger": "node ./packages/licenses/dist/index.cjs get --root packages/logger",
+    "licenses:generate:licenses": "node ./packages/licenses/dist/index.cjs get --root packages/licenses",
+    "licenses:generate:all": "yarn licenses:setup && yarn licenses:generate:core && yarn licenses:generate:logger && yarn licenses:generate:licenses"
   },
   "devDependencies": {
     "@nrwl/cli": "latest",

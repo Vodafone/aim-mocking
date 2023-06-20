@@ -1,4 +1,4 @@
-import { AimConfig } from '@vfuk/lib-aim'
+import { AimConfig } from '@vfuk/lib-web-aim'
 
 const debugAll = false
 

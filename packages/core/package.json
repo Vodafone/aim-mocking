@@ -1,6 +1,6 @@
 {
-  "name": "@vfuk/lib-aim",
-  "version": "10.1.7",
+  "name": "@vfuk/lib-web-aim",
+  "version": "10.2.0",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
   "type": "module",
   "source": "src/index.ts",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.7",
     "@root/walk": "^1.1.0",
-    "@vfuk/lib-aim-logger": "^10.0.2",
+    "@vfuk/lib-aim-logger": "^10.2.0",
     "await-to-js": "^2.0.1",
     "blueimp-md5": "^2.10.0",
     "body-parser": "^1.18.3",
