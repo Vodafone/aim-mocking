@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "parallel": true,
+  "stream": true,
+  "version": "10.2.0",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "registry": "https://vfuk-digital.pkgs.visualstudio.com/_packaging/Web/npm/registry/"
+    }
+  }
+}

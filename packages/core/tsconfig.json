@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "strictNullChecks": false,
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@typesDef/*": ["src/types/*"],
+      "@modules/*": ["src/modules/*"],
+      "@storageInterfaces/*": ["src/storageInterfaces/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
