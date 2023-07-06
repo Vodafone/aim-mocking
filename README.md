@@ -231,7 +231,7 @@ Author: [add name]
 
 Current lead maintainer: [Radek Swiat](https://github.com/radswiat)
 
-See all contributors [here]() [to be added]
+See all contributors [here](https://github.com/Vodafone/aim-mocking/graphs/contributors)
 
 ------
 
