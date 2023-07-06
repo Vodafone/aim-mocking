@@ -47,3 +47,7 @@ __mockapi__
 
 # Serverless directories
 .serverless
+
+# VSCode specific
+.vscode
+.vscode/*
