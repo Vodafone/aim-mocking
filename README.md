@@ -94,15 +94,13 @@ Run `yarn start` will run the tests and the scenarios which you can import to yo
 
 ## Getting started
 
-If you prefer a code example visit the playground app here:
-- `./packages/playground`
-- or as a link here: [Playground code](https://dev.azure.com/vfuk-digital/Digital/_git/lib-web-aim?path=/packages/playground) [to be updated]
+[to be updated]
 
 
 ### Requirements
 
 - Node version >18.13.0
-- Both packages installed: `@vfuk/lib-web-aim` and `@vfuk/lib-aim-logger`
+- Both packages installed: `[to be updated]` and `[to be updated]`
 
 
 ### Installation
@@ -110,12 +108,12 @@ If you prefer a code example visit the playground app here:
 With npm:
 
 ```
-npm install @vfuk/lib-web-aim @vfuk/lib-aim-logger
+npm install [to be updated]
 ```
 
 With yarn:
 ```
-yarn add @vfuk/lib-web-aim @vfuk/lib-aim-logger
+yarn add [to be updated]
 ```
 
 
@@ -124,7 +122,7 @@ yarn add @vfuk/lib-web-aim @vfuk/lib-aim-logger
 Implement into express app
 
 ```
-import Aim from '@vfuk/lib-web-aim'
+import Aim from '[to be updated]'
 
 import express from 'express'
 
