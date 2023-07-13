@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-// declare module '@vfuk/util-aim-logger' {
+// declare module '@vodafoneuk/util-aim-logger' {
 
 interface Group {
   yarn: Yarn

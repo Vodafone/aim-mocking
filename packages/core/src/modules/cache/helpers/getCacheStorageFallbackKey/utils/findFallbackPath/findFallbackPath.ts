@@ -1,7 +1,7 @@
 import path from 'path'
 import fs from 'fs'
 
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 
 import configController from '@modules/configController'
 

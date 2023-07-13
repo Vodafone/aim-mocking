@@ -1,5 +1,5 @@
 import type { Request } from 'express'
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 
 import filterReqBodyKeys from './utils/filterReqBodyKeys'
 import filterReqQueryKeys from './utils/filterReqQueryKeys'

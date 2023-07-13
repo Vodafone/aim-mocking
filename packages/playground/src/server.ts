@@ -1,8 +1,9 @@
 import newman from 'newman'
 import express from 'express'
 import proxy from 'express-http-proxy'
+import open from 'open'
 
-import AimMiddleware from '@vfuk/lib-web-aim'
+import AimMiddleware from '@vodafoneuk/lib-web-aim'
 import aimConfig from './aim.config'
 
 import collection from './AIM.postman_collection.json' assert { type: 'json' }
@@ -30,9 +31,12 @@ export default function server() {
   // Proxy to backend apis ( datausa as an example )
   app.use('/api', proxy('https://datausa.io'))
 
+  app.use('/', express.static('dist/public'))
+
   app
     .listen(3000, () => {
       console.log('server running at http://localhost:3000')
+      open(`http://localhost:3000`)
     })
     .on('error', function (err) {
       console.error(err)

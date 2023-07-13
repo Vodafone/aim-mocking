@@ -1,4 +1,4 @@
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 import isEmpty from 'lodash/isEmpty.js'
 
 import configController from '@modules/configController'

@@ -3,7 +3,7 @@ import type { Request } from 'express'
 import path from 'path'
 import fs from 'fs'
 import walk from 'walk'
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 
 import configController from '@modules/configController'
 

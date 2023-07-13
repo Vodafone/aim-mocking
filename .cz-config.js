@@ -13,9 +13,8 @@ module.exports = {
       name: 'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
     },
   ],
-  allowTicketNumber: true,
-  isTicketNumberRequired: true,
-  ticketNumberRegExp: '(#)\\d{5,6}',
+  allowTicketNumber: false,
+  isTicketNumberRequired: false,
   messages: {
     type: "Select the type of change that you're committing:",
     scope: 'Which microsite this change applies to:',

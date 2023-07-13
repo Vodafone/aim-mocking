@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { Request, Response } from 'express'
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 import chalk from 'chalk'
 
 import cache from '@modules/cache'

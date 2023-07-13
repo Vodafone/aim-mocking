@@ -1,6 +1,6 @@
 {
-  "name": "@vfuk/lib-generate-licenses",
-  "version": "10.2.0",
+  "name": "@vodafoneuk/lib-generate-licenses",
+  "version": "1.0.0",
   "description": "licenses generator",
   "type": "module",
   "source": "src/index.ts",
@@ -12,7 +12,7 @@
     "node": ">=18.13.0"
   },
   "scripts": {
-    "start": "nx build @vfuk/lib-web-aim && yarn build && node dist/index",
+    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
     "build": "rollup -c"
   },
   "exports": {

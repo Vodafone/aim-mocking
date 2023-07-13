@@ -4,6 +4,7 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "baseUrl": ".",
+    "jsx": "react",
     "paths": {
       "@root/*": ["src/*"],
       "@config/*": ["src/config/*"],

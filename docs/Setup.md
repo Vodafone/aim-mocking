@@ -5,7 +5,7 @@
 
 If you prefer a code example visit the playground app here:
 - `./packages/playground`
-- or as a link here: [Playground code](https://dev.azure.com/vfuk-digital/Digital/_git/lib-web-aim?path=/packages/playground)
+- or as a link here: [Playground code](https://github.com/Vodafone/aim-mocking/blob/main/packages/playground/src/server.ts)
 
 ## Yarn install
 ------
@@ -15,14 +15,14 @@ Make sure to install 2 packages. Aim and the logger.
 Logger is a custom logger built for AIM and it was split from the core in case of future removal/replacements.
 
 ```
-yarn add @vfuk/lib-web-aim @vfuk/lib-aim-logger
+yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 ```
 
 ## Implement into express app
 ------
 
 ```
-import Aim from '@vfuk/lib-web-aim'
+import Aim from '@vodafoneuk/lib-web-aim'
 
 import express from 'express'
 

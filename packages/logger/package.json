@@ -1,6 +1,6 @@
 {
-  "name": "@vfuk/lib-aim-logger",
-  "version": "10.2.0",
+  "name": "@vodafoneuk/lib-aim-logger",
+  "version": "1.0.0",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
   "type": "module",
   "source": "src/index.ts",

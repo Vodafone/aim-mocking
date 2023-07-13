@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 // @ts-ignore
 import modifyResponse from 'node-http-proxy-json'
 
-import logger from '@vfuk/lib-aim-logger'
+import logger from '@vodafoneuk/lib-aim-logger'
 
 import configController from '@modules/configController'
 import cacheController from '@modules/cacheController'
