@@ -1,0 +1,59 @@
+{
+  "name": "@vodafoneuk/lib-aim-playground",
+  "version": "1.0.0",
+  "description": "Playground and examples for AIM",
+  "type": "module",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18.13.0"
+  },
+  "scripts": {
+    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
+    "build": "rollup -c"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "author": "Radoslaw Swiat",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-react": "^7.22.5",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-html": "^1.0.2",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.26",
+    "axios": "^1.4.0",
+    "open": "^9.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
+    "rollup-plugin-generate-html-template": "^1.7.0",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "styled-components": "^6.0.4",
+    "@types/express-http-proxy": "^1.6.3",
+    "@types/newman": "^5.3.1",
+    "@vodafoneuk/lib-web-aim": "^10.2.0",
+    "express": "^4.18.2",
+    "express-http-proxy": "^1.6.3",
+    "newman": "^5.3.2"
+  },
+  "volta": {
+    "node": "18.13.0",
+    "yarn": "1.22.19"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "extends": ["prettier", "plugin:prettier/recommended", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "ignorePatterns": ["**/dist/*", "**/*.d.ts"],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "env": {
+    "es6": true,
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "semi": 0,
+    "@typescript-eslint/ban-ts-comment": 0
+  }
+}

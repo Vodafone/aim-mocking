@@ -1,0 +1,14 @@
+#!/bin/sh
+#. "$(dirname "$0")/_/husky.sh"
+
+# Detect "git commit --amend --no-edit" and skip commitizen
+IS_AMEND=$(ps -ocommand= -p $PPID | grep -e '--amend')
+IS_FORCE=$(ps -ocommand= -p $PPID | grep -e ':force-skip')
+
+if [ -n "$IS_AMEND" ]; then
+  echo "skipped"
+elif [ -n "$IS_FORCE" ]; then
+    echo "skipped"
+else
+  eval "exec < /dev/tty && node_modules/.bin/cz --hook"
+fi
