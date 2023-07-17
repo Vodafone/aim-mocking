@@ -1,6 +1,6 @@
 {
   "name": "@vodafoneuk/lib-web-aim",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
   "author": "Radoslaw Swiat",
   "license": "ISC",
@@ -44,7 +44,7 @@
   "dependencies": {
     "@babel/runtime": "^7.20.7",
     "@root/walk": "^1.1.0",
-    "@vodafoneuk/lib-aim-logger": "^1.0.1",
+    "@vodafoneuk/lib-aim-logger": "^1.0.2",
     "await-to-js": "^2.0.1",
     "blueimp-md5": "^2.10.0",
     "body-parser": "^1.18.3",
