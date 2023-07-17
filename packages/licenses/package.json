@@ -1,6 +1,6 @@
 {
   "name": "@vodafoneuk/lib-generate-licenses",
-  "version": "1.0.9",
+  "version": "1.0.0",
   "description": "licenses generator",
   "author": "Radoslaw Swiat",
   "license": "ISC",
