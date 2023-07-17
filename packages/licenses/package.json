@@ -1,7 +1,9 @@
 {
   "name": "@vodafoneuk/lib-generate-licenses",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "licenses generator",
+  "author": "Radoslaw Swiat",
+  "license": "ISC",
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
@@ -23,8 +25,6 @@
     },
     "./package.json": "./package.json"
   },
-  "author": "Radoslaw Swiat",
-  "license": "ISC",
   "dependencies": {
     "@root/walk": "^1.1.0",
     "@types/glob": "^8.1.0",

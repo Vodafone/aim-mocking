@@ -1,7 +1,9 @@
 {
   "name": "@vodafoneuk/lib-aim-logger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
+  "author": "Radoslaw Swiat",
+  "license": "ISC",
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
@@ -22,8 +24,6 @@
     },
     "./package.json": "./package.json"
   },
-  "author": "Radoslaw Swiat",
-  "license": "ISC",
   "dependencies": {
     "ansi-styles": "6.1.0",
     "ansi-to-html": "0.7.2",

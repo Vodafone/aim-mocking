@@ -4,11 +4,12 @@
   "useWorkspaces": true,
   "parallel": true,
   "stream": true,
-  "version": "10.2.0",
+  "version": "independent",
   "command": {
     "version": {
-      "allowBranch": "master",
-      "conventionalCommits": true
+      "allowBranch": "main",
+      "conventionalCommits": true,
+      "registry": "https://registry.npmjs.org"
     }
   }
 }

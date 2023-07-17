@@ -21,7 +21,9 @@
     "licenses:generate:core": "node ./packages/licenses/dist/index.cjs get --root packages/core",
     "licenses:generate:logger": "node ./packages/licenses/dist/index.cjs get --root packages/logger",
     "licenses:generate:licenses": "node ./packages/licenses/dist/index.cjs get --root packages/licenses",
-    "licenses:generate:all": "yarn licenses:setup && yarn licenses:generate:core && yarn licenses:generate:logger && yarn licenses:generate:licenses"
+    "licenses:generate:all": "yarn licenses:setup && yarn licenses:generate:core && yarn licenses:generate:logger && yarn licenses:generate:licenses",
+    "// Release commands": "=========================================================================",
+    "versionup": "lerna version --conventional-commits --no-git-tag-version --no-commit-hooks --no-push"
   },
   "devDependencies": {
     "@nrwl/cli": "latest",
@@ -69,5 +71,8 @@
   "volta": {
     "node": "18.13.0",
     "yarn": "1.22.19"
+  },
+  "dependencies": {
+    "commitizen": "^4.3.0"
   }
 }
