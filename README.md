@@ -1,16 +1,10 @@
-<img width="165px" height="45px" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Vodafone_2017_logo.svg/1280px-Vodafone_2017_logo.svg.png">
+<img width="165" height="45" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Vodafone_2017_logo.svg/1280px-Vodafone_2017_logo.svg.png" alt="Vodafone">
 
 # AIM - Vodafone Mocking Service
 
-AIM in short is an express based mocking middleware capable of mocking and recording APIs. It is only server-side, so it doesn't modify client side code, so you don't have to bother if mocks are different from production or other environment - it should behave in the same way as your production environment.
+AIM is a mocking middleware that is based on Express and can mock and record APIs. It operates only on the server-side and does not modify the client-side code. Therefore, you don't need to worry if the mocks are different from the production or other environments, as AIM behaves in the same way as your production environment.
 
-The main benefit of using AIM over other tools is that it does not need mapping files or written code to map your request and serve back the mock files, which leads to much lower maintenance cost. It is able to automatically detect which mock to return, depending on the request.
-
-[update picture for mapping examples]
-
-<img width="1281" alt="image" src="https://user-images.githubusercontent.com/78380665/236480492-e9d08969-f50b-44e7-8df8-ef9c87c25335.png">
-
-[to be added]
+The main advantage of using AIM over other tools is that it does not require mapping files or written code to map your request and serve back the mock files. This leads to lower maintenance costs. AIM can automatically detect which mock to return based on the request.
 
 ------
 
@@ -35,35 +29,35 @@ The main benefit of using AIM over other tools is that it does not need mapping 
 
 ## How AIM works
 
-When you make an API request, normally it would be proxied to your Back End server. AIM basically sits in between. As long as it is disabled, it's not doing anything. Once it's enabled, there are few options to choose from:
-1. **Disabled mode**: application will continue working as usually without AIM.
-2. **Recording mode**: API requests are allowed as usually, but returned responses will be also saved and stored in mock files, to be used for the future mocking.
-3. **Mocking mode**: API requests going to your Back End server are stopped, and mocked responses, which have been created or recorded previously, will be received.
+When you make an API request, it is normally proxied to your back-end server. AIM essentially sits in between. As long as it is disabled, it is not doing anything. Once it is enabled, you have a few options to choose from:
+1. **Disabled mode**: The application will continue working as usual without AIM.
+2. **Recording mode**: API requests are allowed as usual, but the returned responses will also be saved and stored in mock files for future mocking.
+3. **Mocking mode**: API requests going to your back-end server will be stopped, and mocked responses that have been created or recorded previously will be received.
 
-***AIM doesn't allow using both modes at the same time to avoid confusion about which data is real and which is mocked.***
+***AIM does not allow using both modes simultaneously to avoid confusion about which data is real and which is mocked.***
 
-In case of Mocking mode, if mocks don't exist, AIM will provide guidelines on fixing the problem and which files to create, and/or create mocks manually.
+If Mocking mode is enabled, and mocks do not exist, AIM will provide guidelines on how to fix the problem and which files to create, and/or create mocks manually.
 
 <!-- [add a better picture of high level design on how AIM works] -->
 
-<img width="1292" alt="image" src="https://user-images.githubusercontent.com/78380665/236480054-2c95cc8d-52fb-4102-94fb-d44c0be85f27.png">
+<img width="1292" alt="A diagram showing the how AIM works at a high level" src="https://user-images.githubusercontent.com/78380665/236480054-2c95cc8d-52fb-4102-94fb-d44c0be85f27.png">
 
-AIM is a different way of middleware, because you are passing application to it, as it has to have a good control over it. If it would have been done in another way, setup would be much more complex, because AIM needs to proxy the requests.
+AIM is a unique type of middleware because it requires passing the application to it in order to maintain good control over it. If implemented differently, the setup process would be much more complex since AIM needs to proxy requests.
 
-At the moment, AIM is able to mock ***only JSON responses***. Default response status for mocks is always 200, but it can be changed when needed.
+Currently, AIM is only capable of mocking ***JSON responses***. The default response status for mocks is always 200, but it can be changed as needed.
 
 ### Some of the most important features of AIM:
 
-1. `session`: allows multiple people to work on mock files with different data. AIM is recognizing who you are, based on the session of first connect, and it gives back same in-memory session later one.
-2. `ConfigController`: dynamic configuration inside AIM.
-    - all configs come from it
-    - different configs for different users (session support)
-    - handles configuration endpoints (health, mocking, recording etc.) - the one which can be modified by APIs.
-3. `Cache` = mocks: AIM supports only cache interface.
-4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` - are the functions where AIM actually sits and is able to manipulate requests/responses and data.
+1. `session`: allows multiple people to work on mock files with different data. AIM recognises who you are based on the session of first connect and returns the same in-memory session later on.
+2. `ConfigController`: provides dynamic configuration inside AIM.
+    - All configurations come from it.
+    - Different configurations are available for different users (session support).
+    - Handles configuration endpoints (health, mocking, recording, etc.) that can be modified by APIs.
+3. `Cache` = mocks: AIM supports only the cache interface.
+4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` are the functions where AIM actually sits and can manipulate requests, responses, and data.
 5. `cacheController`: helps to return correct mocks.
 
-All mock responses can be recognised via `__cacheMeta` object added to response. Some of it's properties can be modified to provide better and more realisting mocking experience.
+All mock responses can be recognised via the `__cacheMeta` object added to the response. Some of its properties can be modified to provide a better and more realistic mocking experience.
 
 ```
 "__cacheMeta": {    // used for visualising body and query parameters for debugging purpose, main ingredients for the hash
@@ -76,32 +70,28 @@ All mock responses can be recognised via `__cacheMeta` object added to response.
 }
 ```
 
-Mocking different scenarios [add a better picture]
-<img width="884" alt="image" src="https://github.com/Vodafone/aim-mocking/assets/78380665/57cd6954-720c-4dbe-a63d-5bdcf717ee1b">
+<img width="884" alt="A diagram showing examples of different mocking scenarios" src="https://github.com/Vodafone/aim-mocking/assets/78380665/57cd6954-720c-4dbe-a63d-5bdcf717ee1b">
 
 
 ### Package structure
 
-AIM is a NX monorepo, including 3 packages:
-- Core - main package, where AIM "sits"
-- Logger - custom built package, which provides AIM specific logs in terminal to get clear information about what is being done
-- Playground - place where you can test AIM.
+AIM is a NX monorepo that includes three packages:
+- Core: the main package where AIM "sits"
+- Logger: a custom-built package that provides AIM-specific logs in the terminal, giving clear information about what is being done
+- Playground: a place where you can test AIM.
 
 ### Playground
 
-Run `yarn start` will run the tests and the scenarios which you can import to your Postman. Has some showcases how AIM works.
+Running `yarn start` will execute tests and scenarios that showcase how AIM works. You can also import these scenarios into your Postman.
 
 ------
 
 ## Getting started
 
-[to be updated]
-
-
 ### Requirements
 
 - Node version >18.13.0
-- Both packages installed: `[to be updated]` and `[to be updated]`
+- Both packages installed: `@vodafoneuk/lib-web-aim` and `@vodafoneuk/lib-aim-logger`
 
 
 ### Installation
@@ -109,12 +99,12 @@ Run `yarn start` will run the tests and the scenarios which you can import to yo
 With npm:
 
 ```
-npm install [to be updated]
+npm install @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 ```
 
 With yarn:
 ```
-yarn add [to be updated]
+yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 ```
 
 
@@ -123,7 +113,7 @@ yarn add [to be updated]
 Implement into express app
 
 ```
-import Aim from '[to be updated]'
+import Aim from '@vodafoneuk/lib-web-aim'
 
 import express from 'express'
 
@@ -132,7 +122,7 @@ const app = express()
 Aim(app, yourConfig)
 ```
 
-Configuration - specific to your project. It's important to remember that it's not dynamic: AIM behaviour is controlled through API calls to AIM itself.
+Configuration is specific to your project. It is important to remember that it is not dynamic; AIM behaviour is controlled through API calls to AIM itself.
 
 ```
 export interface AimConfig {
@@ -156,7 +146,7 @@ export interface AimConfig {
   /** Aim internal api endpoints prefix  */
   apisConfigurationEndpointsPrefix?: string
 
-  /** Proxy configuration for paths that aim should intercept, mock and record */
+  /** Proxy configuration for paths that AIM should intercept, mock and record */
   proxy: Record<string, AimProxyConfig>
 
   /** Request body keys that should be ignored when calculating a hash */
@@ -180,12 +170,9 @@ export interface AimConfig {
 }
 ```
 
-[more to be added]
-
-
 ## Examples
 
-Below are not default values! If you don't know what each option do, please do not copy it.
+Below are not default values! If you are unsure of what each option does, please do not copy it.
 
 ```
 
@@ -199,7 +186,7 @@ Below are not default values! If you don't know what each option do, please do n
     },
     proxy: {
       '/api': {
-        // Ask aim to proxy back to your own server
+        // Ask AIM to proxy back to your own server
         // This is useful if you want to use your own proxy instead of AIM
         // which will be removed in production code
         target: 'http://localhost:3000',
@@ -209,23 +196,14 @@ Below are not default values! If you don't know what each option do, please do n
     },
   })
 ```
-
-[more to be added]
-
-------
-
-<!-- ## Video tutorials??
-
-[to be added] -->
-
 ------
 
 ## Contributing
 
-- Fork the repo
-- Make your changes
-- Send a PR request, making sure the app still runs and tests are passing
-- A member of our team will review and discuss
+- Fork the repository.
+- Make your changes.
+- Send a pull request, ensuring that the application still runs and tests are passing.
+- A member of our team will review and discuss your changes.
 
 ------
 
