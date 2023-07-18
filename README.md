@@ -6,6 +6,9 @@ AIM is a mocking middleware that is based on Express and can mock and record API
 
 The main advantage of using AIM over other tools is that it does not require mapping files or written code to map your request and serve back the mock files. This leads to lower maintenance costs. AIM can automatically detect which mock to return based on the request.
 
+<img width="1281" alt="A diagram showing AIM mocking" src="https://user-images.githubusercontent.com/78380665/236480492-e9d08969-f50b-44e7-8df8-ef9c87c25335.png">
+
+
 ------
 
 ## Contents
