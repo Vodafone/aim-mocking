@@ -1,7 +1,4 @@
-[[_TOC_]]
-
 # Setup
-----
 
 If you prefer a code example visit the playground app here:
 - `./packages/playground`
@@ -10,9 +7,9 @@ If you prefer a code example visit the playground app here:
 ## Yarn install
 ------
 
-Make sure to install 2 packages. Aim and the logger.
+Make sure to install two packages: AIM and Logger.
 
-Logger is a custom logger built for AIM and it was split from the core in case of future removal/replacements.
+Logger is a custom logger built specifically for AIM. It was split from the core to allow for future removal or replacement.
 
 ```
 yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
@@ -74,7 +71,7 @@ export interface AimConfig {
 
 ## Example initialization
 
-Below are not default values! If you don't know what each option do, please do not copy it.
+The following values are not defaults. If you are unsure of what each option does, please do not copy them.
 
 ```
 
