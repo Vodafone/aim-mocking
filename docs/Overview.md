@@ -7,23 +7,10 @@ src="https://cdn.pixabay.com/photo/2014/03/25/17/00/bulls-eye-297805_1280.png">
 
 </div>
 
-[[_TOC_]]
-
 # AIM - Vodafone mocking service
 
----
+In short, AIM is an Express-based mocking middleware that can mock and record APIs.
 
-AIM in short is an express based mocking middleware capable of mocking and recording APIs.
+## How AIM compares with other tools?
 
-
-# How AIM compares with other tools?
-
----
-
-The main benefit of using aim over other tools is that AIM does not need mapping files or written code to map your request and serve back the mock files - which leads to **much lower maintenance cost**.
-
-# Video tutorials (5 min introduction to aim)
-
----
-
-[Tutorials - Guides](/Tutorials-%2D-Guides)
+The main benefit of using AIM over other tools is that it does not require mapping files or written code to map your request and serve back the mock files. This leads to **much lower maintenance costs**.
