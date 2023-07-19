@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Run [all] prettier check
-        run: yarn prettier --check 'src/**/*.(ts|tsx|json)'
+        run: yarn prettier --check 'packages/**/*.(ts|tsx|json)'
 
       - name: Run [all] build check
         run: yarn nx run-many --target=build
