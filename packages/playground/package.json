@@ -38,7 +38,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
-    "@vodafoneuk/lib-web-aim": "^1.0.9",
+    "@vodafoneuk/lib-web-aim": "*",
     "axios": "^1.4.0",
     "express": "^4.18.2",
     "express-http-proxy": "^1.6.3",
