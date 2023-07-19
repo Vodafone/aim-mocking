@@ -1,9 +1,8 @@
-name: publish
+name: Quality
 on:
   pull_request:
     branches:
       - main
-    types: [closed]
 
 jobs:
   publish:
@@ -23,8 +22,5 @@ jobs:
       - name: Build
         run: yarn nx run-many --target=build
 
-      - name: Publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          yarn lerna publish from-package --yes
+      - name: Build
+        run: yarn nx run-many --target=build
