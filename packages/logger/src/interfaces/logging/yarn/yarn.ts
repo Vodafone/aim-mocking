@@ -52,11 +52,9 @@ ${stringFill(`${chalk.yellowBright('*')} [FILL] © vodafone ---- ${chalk.gray(ve
     if (status === null) statusString = cfg.symbolInfo
     // prepare log output string
     const logOutput = stringFill(`
-    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(
-      ']',
-    )} ${chalk.hex(cfg.descColorHex)(description)} [FILL] ${chalk.hex(cfg.bracketStatusColorHex)(
-      '[',
-    )}${statusString}${chalk.hex(cfg.bracketStatusColorHex)(']')}
+    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(']')} ${chalk.hex(cfg.descColorHex)(description)} [FILL] ${chalk.hex(cfg.bracketStatusColorHex)('[')}${statusString}${chalk.hex(
+      cfg.bracketStatusColorHex,
+    )(']')}
     `)
     outputHandler.handleOutput(this.context, logOutput)
   }
@@ -75,9 +73,7 @@ ${stringFill(`${chalk.yellowBright('*')} [FILL] © vodafone ---- ${chalk.gray(ve
     const cfg = this.context.theme.yarn.status
     // prepare log output string
     const logOutput = stringFill(`
-    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(
-      ']',
-    )} ${chalk.hex(cfg.descColorHex)(description)} [FILL]`)
+    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(']')} ${chalk.hex(cfg.descColorHex)(description)} [FILL]`)
     outputHandler.handleOutput(this.context, logOutput)
   }
 
@@ -95,15 +91,10 @@ ${stringFill(`${chalk.yellowBright('*')} [FILL] © vodafone ---- ${chalk.gray(ve
     const cfg = this.context.theme.yarn.info
     // prepare log output string
     const logOutput = stringFill(`
-    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(
-      ']',
-    )} [FILL] ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.valueColorHex)(value)}${chalk.hex(
-      cfg.bracketColorHex,
-    )(']')}
+    ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.textColorHex)(title)}${chalk.hex(cfg.bracketColorHex)(']')} [FILL] ${chalk.hex(cfg.bracketColorHex)('[')}${chalk.hex(cfg.valueColorHex)(value)}${chalk.hex(cfg.bracketColorHex)(']')}
     `)
     outputHandler.handleOutput(this.context, logOutput)
   }
-
 
   /**
    * Yarn whisper
@@ -163,7 +154,12 @@ ${chalk.gray('[')} ${symbols.success} ${chalk.gray(']')} ${chalk.green('Success:
 ${stringFill('- [FILL] -')}`
     if (values.length) {
       logOutput += `
-${chalk.gray(JSON.stringify(values, null, 2).split(EOL).map((line) => `${chalk.green(figures.circleDotted)} ${line}` ).join(EOL))}
+${chalk.gray(
+  JSON.stringify(values, null, 2)
+    .split(EOL)
+    .map((line) => `${chalk.green(figures.circleDotted)} ${line}`)
+    .join(EOL),
+)}
 ${stringFill('- [FILL] -')}`
     }
     outputHandler.handleOutput(this.context, logOutput)
@@ -180,7 +176,12 @@ ${chalk.gray('[')} ${symbols.error} ${chalk.gray(']')} ${chalk.red('Failure: ')}
 ${stringFill('- [FILL] -')}`
     if (values.length) {
       logOutput += `
-${chalk.gray(JSON.stringify(values, null, 2).split(EOL).map((line) => `${chalk.red(figures.circleDotted)} ${line}` ).join(EOL))}
+${chalk.gray(
+  JSON.stringify(values, null, 2)
+    .split(EOL)
+    .map((line) => `${chalk.red(figures.circleDotted)} ${line}`)
+    .join(EOL),
+)}
 ${stringFill('- [FILL] -')}`
     }
     outputHandler.handleOutput(this.context, logOutput)
