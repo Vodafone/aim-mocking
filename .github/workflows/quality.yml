@@ -19,8 +19,11 @@ jobs:
       - name: Install
         run: yarn install
 
-      - name: Build
+      - name: Run [all] prettier check
+        run: yarn prettier --check 'src/**/*.(ts|tsx|json)'
+
+      - name: Run [all] build check
         run: yarn nx run-many --target=build
 
-      - name: Build
-        run: yarn nx run-many --target=build
+      - name: Run [core] test check
+        run: yarn nx test @vfuk/lib-web-aim
