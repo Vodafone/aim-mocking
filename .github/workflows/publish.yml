@@ -18,12 +18,15 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install
+        if: github.event.pull_request.merged == true
         run: yarn install
 
       - name: Build
+        if: github.event.pull_request.merged == true
         run: yarn nx run-many --target=build
 
       - name: Publish
+        if: github.event.pull_request.merged == true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |

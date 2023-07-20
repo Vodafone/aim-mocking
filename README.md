@@ -8,8 +8,7 @@ The main advantage of using AIM over other tools is that it does not require map
 
 <img width="1281" alt="A diagram showing AIM mocking" src="https://user-images.githubusercontent.com/78380665/236480492-e9d08969-f50b-44e7-8df8-ef9c87c25335.png">
 
-
-------
+---
 
 ## Contents
 
@@ -25,19 +24,21 @@ The main advantage of using AIM over other tools is that it does not require map
     - [Quick Start](#quick-start)
   - [Examples](#examples)
   - [Contributing](#contributing)
+  - [Releases](#releases)
   - [People](#people)
   - [License](#license)
 
-------
+---
 
 ## How AIM works
 
 When you make an API request, it is normally proxied to your back-end server. AIM essentially sits in between. As long as it is disabled, it is not doing anything. Once it is enabled, you have a few options to choose from:
+
 1. **Disabled mode**: The application will continue working as usual without AIM.
 2. **Recording mode**: API requests are allowed as usual, but the returned responses will also be saved and stored in mock files for future mocking.
 3. **Mocking mode**: API requests going to your back-end server will be stopped, and mocked responses that have been created or recorded previously will be received.
 
-***AIM does not allow using both modes simultaneously to avoid confusion about which data is real and which is mocked.***
+**_AIM does not allow using both modes simultaneously to avoid confusion about which data is real and which is mocked._**
 
 If Mocking mode is enabled, and mocks do not exist, AIM will provide guidelines on how to fix the problem and which files to create, and/or create mocks manually.
 
@@ -47,15 +48,15 @@ If Mocking mode is enabled, and mocks do not exist, AIM will provide guidelines 
 
 AIM is a unique type of middleware because it requires passing the application to it in order to maintain good control over it. If implemented differently, the setup process would be much more complex since AIM needs to proxy requests.
 
-Currently, AIM is only capable of mocking ***JSON responses***. The default response status for mocks is always 200, but it can be changed as needed.
+Currently, AIM is only capable of mocking **_JSON responses_**. The default response status for mocks is always 200, but it can be changed as needed.
 
 ### Some of the most important features of AIM:
 
 1. `session`: allows multiple people to work on mock files with different data. AIM recognises who you are based on the session of first connect and returns the same in-memory session later on.
 2. `ConfigController`: provides dynamic configuration inside AIM.
-    - All configurations come from it.
-    - Different configurations are available for different users (session support).
-    - Handles configuration endpoints (health, mocking, recording, etc.) that can be modified by APIs.
+   - All configurations come from it.
+   - Different configurations are available for different users (session support).
+   - Handles configuration endpoints (health, mocking, recording, etc.) that can be modified by APIs.
 3. `Cache` = mocks: AIM supports only the cache interface.
 4. [HPM] `proxy` / `setupProxy`: `onProxyRequest` and `onProxyResponse` are the functions where AIM actually sits and can manipulate requests, responses, and data.
 5. `cacheController`: helps to return correct mocks.
@@ -75,10 +76,10 @@ All mock responses can be recognised via the `__cacheMeta` object added to the r
 
 <img width="884" alt="A diagram showing examples of different mocking scenarios" src="https://github.com/Vodafone/aim-mocking/assets/78380665/57cd6954-720c-4dbe-a63d-5bdcf717ee1b">
 
-
 ### Package structure
 
 AIM is a NX monorepo that includes three packages:
+
 - Core: the main package where AIM "sits"
 - Logger: a custom-built package that provides AIM-specific logs in the terminal, giving clear information about what is being done
 - Playground: a place where you can test AIM.
@@ -87,7 +88,7 @@ AIM is a NX monorepo that includes three packages:
 
 Running `yarn start` will execute tests and scenarios that showcase how AIM works. You can also import these scenarios into your Postman.
 
-------
+---
 
 ## Getting started
 
@@ -95,7 +96,6 @@ Running `yarn start` will execute tests and scenarios that showcase how AIM work
 
 - Node version >18.13.0
 - Both packages installed: `@vodafoneuk/lib-web-aim` and `@vodafoneuk/lib-aim-logger`
-
 
 ### Installation
 
@@ -106,10 +106,10 @@ npm install @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 ```
 
 With yarn:
+
 ```
 yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 ```
-
 
 ### Quick Start
 
@@ -199,7 +199,8 @@ Below are not default values! If you are unsure of what each option does, please
     },
   })
 ```
-------
+
+---
 
 ## Contributing
 
@@ -208,7 +209,18 @@ Below are not default values! If you are unsure of what each option does, please
 - Send a pull request, ensuring that the application still runs and tests are passing.
 - A member of our team will review and discuss your changes.
 
-------
+---
+
+## Releases
+
+- Create a PR.
+- Make your changes.
+- Manually prepare the release and release notes.
+- Bump versions of the modified packages.
+- Send a pull request, ensuring that the application still runs and tests are passing.
+- Once merged, new release will be created automatically through `publish` action.
+
+---
 
 ## People
 
@@ -218,11 +230,8 @@ Current lead maintainer: [Radek Swiat](https://github.com/radswiat)
 
 See all contributors [here](https://github.com/Vodafone/aim-mocking/graphs/contributors)
 
-------
+---
 
 ## License
 
 [MIT License](https://github.com/Vodafone/aim-mocking/blob/main/LICENSE)
-
-
-
