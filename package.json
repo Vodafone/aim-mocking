@@ -21,12 +21,7 @@
     "licenses:generate:core": "node ./packages/licenses/dist/index.cjs get --root packages/core",
     "licenses:generate:logger": "node ./packages/licenses/dist/index.cjs get --root packages/logger",
     "licenses:generate:licenses": "node ./packages/licenses/dist/index.cjs get --root packages/licenses",
-    "licenses:generate:all": "yarn licenses:setup && yarn licenses:generate:core && yarn licenses:generate:logger && yarn licenses:generate:licenses",
-    "// Release commands": "=========================================================================",
-    "versionup": "lerna version --conventional-commits --no-git-tag-version",
-    "postversionup": "npm run commit-version",
-    "commit-version": "git add . && git commit --no-verify -m \"chore(release): publish `node -p 'require(\"./lerna.json\").version'`\"",
-    "release": "lerna publish from-package"
+    "licenses:generate:all": "yarn licenses:setup && yarn licenses:generate:core && yarn licenses:generate:logger && yarn licenses:generate:licenses"
   },
   "devDependencies": {
     "@nrwl/cli": "latest",
