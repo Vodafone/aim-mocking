@@ -7,6 +7,10 @@
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "scope": "@vodafoneuk"
+  },
   "files": [
     "dist"
   ],
