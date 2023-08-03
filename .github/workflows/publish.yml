@@ -25,7 +25,7 @@ jobs:
         if: github.event.pull_request.merged == true
         run: yarn nx run-many --target=build
 
-      - name: Publish
+      - name: Publish packages
         if: github.event.pull_request.merged == true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
