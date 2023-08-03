@@ -88,6 +88,8 @@ AIM is a NX monorepo that includes three packages:
 
 Running `yarn start:playground` will execute tests and scenarios that showcase how AIM works. You can also import these scenarios into your Postman.
 
+You can import `AIM.postman_collection.json` in Postman while running the playground to experiment with AIM API via Postman.
+
 ---
 
 ## Getting started
