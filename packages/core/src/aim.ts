@@ -1,6 +1,6 @@
 import type { Application } from 'express'
 import bodyParser from 'body-parser'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import type { AimConfig } from '@typesDef/config.types'
 

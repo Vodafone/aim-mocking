@@ -2,7 +2,7 @@ import { Application, Request } from 'express'
 import merge from 'lodash/merge.js'
 import defaultAimConfig from '@config/defaultAimConfig'
 import type { AimConfig } from '@typesDef/config.types'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import sessionStore from '../sessionStore'
 

@@ -1,4 +1,4 @@
-import { AimConfig } from '@vodafoneuk/lib-web-aim'
+import { AimConfig } from '@vodafoneuk/aim-mocking'
 
 const debugAll = false
 

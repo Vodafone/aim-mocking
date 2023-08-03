@@ -1,5 +1,5 @@
 import { Application, Request } from 'express'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 // @ts-ignore
 import proxy from 'http-proxy-middleware'
 

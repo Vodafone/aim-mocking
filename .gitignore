@@ -24,7 +24,6 @@ log.html
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
-__mockapi__
 .aimRequestTracker.json
 
 # nyc test coverage

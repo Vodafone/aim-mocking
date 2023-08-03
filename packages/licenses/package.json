@@ -1,5 +1,5 @@
 {
-  "name": "@vodafoneuk/lib-generate-licenses",
+  "name": "@vodafoneuk/licenses-generator",
   "version": "1.0.0",
   "description": "licenses generator",
   "author": "Radoslaw Swiat",
@@ -18,7 +18,7 @@
     "node": ">=18.13.0"
   },
   "scripts": {
-    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
+    "start": "nx build @vodafoneuk/aim-mocking && yarn build && node dist/index",
     "build": "rollup -c"
   },
   "exports": {

@@ -1,5 +1,5 @@
 {
-  "name": "@vodafoneuk/lib-aim-playground",
+  "name": "@vodafoneuk/aim-mocking-playground",
   "version": "1.0.0",
   "description": "Playground and examples for AIM",
   "author": "Radoslaw Swiat",
@@ -14,7 +14,7 @@
     "node": ">=18.13.0"
   },
   "scripts": {
-    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
+    "start": "nx build @vodafoneuk/aim-mocking && yarn build && node dist/index",
     "build": "rollup -c"
   },
   "exports": {
@@ -38,7 +38,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
-    "@vodafoneuk/lib-web-aim": "*",
+    "@vodafoneuk/aim-mocking": "*",
     "axios": "^1.4.0",
     "express": "^4.18.2",
     "express-http-proxy": "^1.6.3",

@@ -2,7 +2,7 @@ import path from 'path'
 
 import fs from 'fs-extra'
 import mkdirp from 'mkdirp'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 import { MockData } from '@typesDef/mockData.types'
 
 import getMocksRootPath from './utils/getMocksRootPath'

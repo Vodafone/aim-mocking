@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { Application, Request, Response } from 'express'
 import bodyParser from 'body-parser'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import configController from '../../../configController'
 
