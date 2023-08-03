@@ -1,1 +1,3 @@
 /integrationTests/*
+/packages/**/dist/*
+AIM.postman_collection.json

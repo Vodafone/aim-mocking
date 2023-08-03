@@ -1,0 +1,32 @@
+name: Quality
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install
+        run: yarn install
+
+      - name: Run [all] prettier check
+        run: yarn prettier --check 'packages/**/*.(ts|tsx|json)'
+
+      - name: Run [all] eslint check
+        run: yarn eslint --ext .ts,.tsx packages
+
+      - name: Run [all] build check
+        run: yarn nx run-many --target=build
+
+      - name: Run [core] test check
+        run: yarn nx test @vodafoneuk/lib-web-aim
