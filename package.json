@@ -8,7 +8,7 @@
   },
   "scripts": {
     "// Start commands": "=================================================================",
-    "start:playground": "yarn nx start @vodafoneuk/lib-aim-playground",
+    "start:playground": "yarn nx start @vodafoneuk/aim-mocking-playground",
     "// Build commands": "=================================================================",
     "build:all": "nx run-many --target=build --all",
     "// Commit commands": "=================================================================",
