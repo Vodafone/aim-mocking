@@ -17,7 +17,7 @@
     "lint": "eslint --ext .ts,.tsx packages/",
     "commit": "cz",
     "// Licenses": "=========================================================================",
-    "licenses:setup": "yarn install && yarn nx build @vodafoneuk/lib-generate-licenses",
+    "licenses:setup": "yarn install && yarn nx build @vodafoneuk/licenses-generator",
     "licenses:generate:core": "node ./packages/licenses/dist/index.cjs get --root packages/core",
     "licenses:generate:logger": "node ./packages/licenses/dist/index.cjs get --root packages/logger",
     "licenses:generate:licenses": "node ./packages/licenses/dist/index.cjs get --root packages/licenses",
