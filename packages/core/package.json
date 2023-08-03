@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
   "author": "Radoslaw Swiat",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",

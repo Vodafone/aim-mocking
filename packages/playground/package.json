@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Playground and examples for AIM",
   "author": "Radoslaw Swiat",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
