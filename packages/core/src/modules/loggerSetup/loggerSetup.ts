@@ -1,4 +1,4 @@
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import defaultAimConfig from '@config/defaultAimConfig'
 import { AimConfig } from '@typesDef/config.types'

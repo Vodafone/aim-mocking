@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import configController from '@modules/configController'
 import cacheController from '@modules/cacheController'

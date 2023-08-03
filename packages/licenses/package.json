@@ -18,7 +18,7 @@
     "node": ">=18.13.0"
   },
   "scripts": {
-    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
+    "start": "nx build @vodafoneuk/aim-mocking && yarn build && node dist/index",
     "build": "rollup -c"
   },
   "exports": {

@@ -1,6 +1,6 @@
 import md5 from 'blueimp-md5'
 import isEmpty from 'lodash/isEmpty.js'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import type { FilteredRequest } from '../getFilteredReq/getFilteredReq.types'
 

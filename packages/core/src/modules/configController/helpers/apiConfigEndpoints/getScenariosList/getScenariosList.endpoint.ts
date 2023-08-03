@@ -4,7 +4,7 @@ import { Request, Response, Application } from 'express'
 // @ts-ignore
 import { walk } from '@root/walk'
 
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import type configController from '../../../configController'
 

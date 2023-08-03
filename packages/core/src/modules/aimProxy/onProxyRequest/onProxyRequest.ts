@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import isExcludedPath from './utils/isExcludedPath'
 

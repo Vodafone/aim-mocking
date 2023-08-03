@@ -1,5 +1,5 @@
 import type { Request } from 'express'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import getCacheStorageKey from './helpers/getCacheStorageKey'
 import getCacheStorageFallbackKey from './helpers/getCacheStorageFallbackKey'
