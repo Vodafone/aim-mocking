@@ -46,7 +46,7 @@
     "tsconfig-paths": "^4.1.2"
   },
   "dependencies": {
-    "@babel/runtime": "^7.20.7",
+    "@babel/runtime": "^7.22.10",
     "@root/walk": "^1.1.0",
     "@vodafoneuk/aim-mocking-logger": "*",
     "await-to-js": "^2.0.1",
