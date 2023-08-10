@@ -56,8 +56,10 @@
   },
   "resolutions": {
     "**/lerna/semver": "^7.5.2",
+    "**/newman/semver": "^7.5.2",
     "**/newman/postman-runtime/handlebars/minimist": "1.2.6",
     "**/newman/word-wrap": "1.2.4",
+    "**/newman/tough-cookie": "4.1.3",
     "**/sessionstore/async": "2.6.4",
     "**/sessionstore/lodash": "4.17.21"
   },
