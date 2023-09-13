@@ -15,8 +15,7 @@ import loggerSetup from './modules/loggerSetup'
 
 /**
  * Aim proxy middleware
- * - for webpack-dev-server proxy usage
- * - should work with express proxy
+ * Main entry point of the AIM proxy middleware
  */
 class AimProxyMiddleware {
   middleware(app: Application, proxyConfig: AimConfig) {
