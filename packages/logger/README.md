@@ -236,4 +236,6 @@ See all contributors [here](https://github.com/Vodafone/aim-mocking/graphs/contr
 
 ## License
 
-[MIT License](https://github.com/Vodafone/aim-mocking/blob/main/LICENSE)
+[MIT License](https://github.com/Vodafone/aim-mocking/blob/main/packages/logger/LICENSE)
+
+[NOTICE](https://github.com/Vodafone/aim-mocking/blob/main/packages/logger/NOTICE)
