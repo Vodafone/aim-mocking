@@ -31,12 +31,18 @@ export default class FileInterface {
     return fs.copySync(getMockFileFullPath(rootDir, from), getMockFileFullPath(rootDir, to))
   }
 
+  extendMockFileWithFilePath(mockFilePath: string, data: MockData) {
+    if (!data?.__cacheMeta) data.__cacheMeta = {}
+    data.__cacheMeta.filePath = mockFilePath
+    return data
+  }
+
   get(mockRelativePath: string): MockData {
     const rootDir = getMocksRootPath()
     const mockFilePath = getMockFileFullPath(rootDir, mockRelativePath)
     mkdirp.sync(path.dirname(mockFilePath))
     if (fs.existsSync(mockFilePath)) {
-      return JSON.parse(fs.readFileSync(mockFilePath, 'utf-8'))
+      return this.extendMockFileWithFilePath(mockFilePath, JSON.parse(fs.readFileSync(mockFilePath, 'utf-8')))
     }
     return null
   }

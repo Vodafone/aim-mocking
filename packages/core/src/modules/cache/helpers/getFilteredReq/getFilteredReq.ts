@@ -11,12 +11,12 @@ export default function getFilteredReqHash(req: Request): FilteredRequest {
   let filteredReq: FilteredRequest = { method: req.method, path: req.path, body: req.body, query: req.query }
   // Filter request before we can generate hash
   // Filter body req keys
-  logger.debug('cache').yarn.whisper(`req filter body`)
+  logger.debug('cacheDebug').yarn.whisper(`req filter body`)
   filteredReq = filterReqBodyKeys(filteredReq)
   // Filter query req keys
-  logger.debug('cache').yarn.whisper(`req filter query`)
+  logger.debug('cacheDebug').yarn.whisper(`req filter query`)
   filteredReq = filterReqQueryKeys(filteredReq)
   // Filter req path
-  logger.debug('cache').yarn.whisper(`req filter path`)
+  logger.debug('cacheDebug').yarn.whisper(`req filter path`)
   return filterReqPath(filteredReq)
 }

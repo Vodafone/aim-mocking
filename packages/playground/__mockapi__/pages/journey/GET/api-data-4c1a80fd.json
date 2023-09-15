@@ -89,6 +89,7 @@
     "hash": {
       "body": "{}",
       "query": "{\"drilldowns\":\"Nation\",\"measures\":\"Population\"}"
-    }
+    },
+    "filePath": "/Users/radoslaw.swiat/Projects/aim-mocking/packages/playground/__mockapi__/pages/journey/GET/api-data-4c1a80fd.json"
   }
 }

@@ -11,16 +11,22 @@ function mockedServiceServer() {
   try {
     AimMiddleware(app, {
       debug: {
+        general: true,
         setup: true,
         cache: true,
+        cacheDebug: true,
         config: true,
         autofix: true,
         onProxyRequest: true,
-        onProxyError: true,
+        onProxyRequestDebug: true,
         onProxyResponse: true,
+        onProxyResponseDebug: true,
+        onProxyError: true,
         configEndpoints: true,
+        configEndpointsDebug: true,
         cacheController: true,
         fileInterface: true,
+        scenarioList: true,
       },
       ignoredPaths: [],
       apisConfigurationEndpointsPrefix: '/AIM_API',

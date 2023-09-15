@@ -4,11 +4,13 @@ import type { AimConfig } from '../src/types/config.types'
 
 const defaultAimConfig: Partial<AimConfig> = {
   debug: {
+    general: true,
     setup: true,
     cache: true,
     config: true,
     autofix: true,
     onProxyRequest: true,
+    onProxyRequestDebug: true,
     onProxyError: true,
     onProxyResponse: true,
     configEndpoints: true,

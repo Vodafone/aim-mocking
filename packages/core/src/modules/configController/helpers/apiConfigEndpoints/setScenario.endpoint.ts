@@ -8,9 +8,9 @@ import configController from '../../../configController'
 export default function getScenarioEndpoint(app: Application, context: typeof configController) {
   const method = 'post'
   const endpointUrl = `${context.config.apisConfigurationEndpointsPrefix}/setScenario`
-  logger.debug('setup').yarn.whisper(`AIM: endpoint: [${method}] "${endpointUrl}"`)
+  logger.debug('setup').yarn.whisper(`endpoint: [${method}] "${endpointUrl}"`)
   app[method](endpointUrl, bodyParser.json(), (req: Request, res: Response) => {
-    logger.debug('configEndpoints').yarn.whisper(`AIM: setScenarioEndpoint config request`)
+    logger.debug('configEndpointsDebug').yarn.whisper(`setScenarioEndpoint config request`)
     const scenario = req.body.scenario
     if (typeof scenario === 'undefined') res.status(400).send({ message: 'Missing "scenario" key on the request body' })
     context.setSessionConfig(req, 'scenario', scenario)

@@ -14,9 +14,9 @@ import onProxyError from '../onProxyError'
 import dynamicProxyRouter from '../dynamicProxyRouter'
 
 export function setupProxy(app: Application) {
-  logger.debug('setup').yarn.whisper('AIM: setup proxy')
+  logger.debug('setup').yarn.whisper('setup proxy')
   for (const [proxyKey, proxyConfig] of Object.entries(configController.config.proxy)) {
-    logger.debug('setup').yarn.whisper(`AIM: proxy: ${proxyKey} to ${proxyConfig.target}`)
+    logger.debug('setup').yarn.whisper(`proxy: ${proxyKey} to ${proxyConfig.target}`)
     const apiProxy = proxy(filterSelfRequests, {
       target: proxyConfig.target,
       logLevel: 'silent',
