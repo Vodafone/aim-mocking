@@ -1,6 +1,6 @@
 {
   "name": "@vodafoneuk/aim-mocking-logger",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Api Interceptor Middleware - localized cache lib and middleware for dalmatian and other api calls",
   "author": "Radoslaw Swiat",
   "license": "MIT",
