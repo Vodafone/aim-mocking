@@ -67,7 +67,9 @@
   ],
   "source": [
     {
-      "measures": ["Population"],
+      "measures": [
+        "Population"
+      ],
       "annotations": {
         "source_name": "Census Bureau",
         "source_description": "The American Community Survey (ACS) is conducted by the US Census and sent to a portion of the population every year.",
@@ -86,6 +88,7 @@
     "hash": {
       "body": "{}",
       "query": "{\"drilldowns\":\"Nation\",\"measures\":\"Population\"}"
-    }
+    },
+    "filePath": "/Users/radoslaw.swiat/Projects/aim-mocking/packages/playground/__mockapi__/default/GET/population-api-data-4c1a80fd.json"
   }
 }

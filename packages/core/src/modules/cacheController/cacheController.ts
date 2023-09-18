@@ -1,10 +1,8 @@
 // @ts-nocheck
 import { Request, Response } from 'express'
 import logger from '@vodafoneuk/aim-mocking-logger'
-import chalk from 'chalk'
 
 import cache from '@modules/cache'
-import hashAutoFix from '@modules/hashAutoFix'
 import configController from '@modules/configController'
 
 import isSuccessStatus from './utils/isSuccessStatus'
@@ -15,7 +13,6 @@ import extendMockResponse from './helpers/extendMockResponse'
 export default async function cacheController(req: Request, res: Response, body: unknown) {
   const isRecordingEnabled = configController.getSessionConfig(req, 'recording')
   const isMockingEnabled = configController.getSessionConfig(req, 'mocking')
-  logger.debug('cacheController').yarn.whisper(`recording: ${isRecordingEnabled} | mocking: ${isMockingEnabled}`)
 
   // If mocking and recording enabled at the same time
   if (isRecordingEnabled && isMockingEnabled) {
@@ -27,13 +24,13 @@ export default async function cacheController(req: Request, res: Response, body:
   // - and if recording is enabled
   // - we don't need to check if response is successful or not since recording works for both
   if (isRecordingEnabled) {
-    logger.console.warn('AIM', 'recording in progress')
+    logger.console.warn('AIM', 'starting to record the response')
     const cacheExists = await cache.exists(req)
     const isForceCacheUpdate = configController.getSessionConfig(req, 'updateCache')
     // If cache exists but force update has not been set - do nothing
     if (cacheExists && !isForceCacheUpdate) {
-      logger.yarn.status('cache:update', 'cache already exists', 0)
-      logger.yarn.status('cache:update', 'returning existing cache data', true)
+      logger.debug('cache').yarn.whisper(`cache already exists`)
+      logger.debug('cache').yarn.whisper(`returning existing cache data`)
       // If cache already exists and was not updated
       // We return the mock response instead of original response
       // We can't use status driven response in that case!
@@ -51,8 +48,6 @@ export default async function cacheController(req: Request, res: Response, body:
     return body
   }
 
-  logger.debug('cacheController').yarn.whisper(`1`)
-
   // If response error
   // do nothing and return original body response
   if (!isSuccessStatus(res.statusCode) && !isMockingEnabled) {
@@ -60,27 +55,22 @@ export default async function cacheController(req: Request, res: Response, body:
     return body
   }
 
-  logger.debug('cacheController').yarn.whisper(`2`)
-  logger.debug('cacheController').yarn.whisper(res.statusCode)
-
   // If response success
   // serve mocks instead of original response
-  logger.debug('cacheController').yarn.whisper(`no success response`)
   let status = 200
   const cacheExists = await cache.exists(req)
   // Add request as to a track list
-  hashAutoFix.track(req)
+  // TODO: aufotifx temporarly disabled
+  // hashAutoFix.track(req)
   // return original response if no mock exists
   if (!cacheExists) {
-    logger.group('cache').yarn.status('cache:retrieve', 'no cache exist', false)
     const expectedCacheFilePath = await cache.getCacheFilePath(req)
-    if (expectedCacheFilePath) logger.group('cache').yarn.whisper(`to fix missing mock create: ${chalk.red(`${expectedCacheFilePath}.json`)}`)
-    logger.group('cache').flush()
+    logger.debug('general').yarn.status('cache:retrieve', 'no cache exist', false)
+    if (expectedCacheFilePath) logger.debug('general').yarn.failure('The mock file not found:', 'To fix it create mock file in:', `${expectedCacheFilePath}.json`)
     return sendResponse(res, body, 400)
   }
 
   // Update mock with meta
-  logger.yarn.whisper('mock exists: update meta')
   await cache.update(req, res)
   res.statusCode = 200
   // Retrieve cache data

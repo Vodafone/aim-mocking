@@ -7,9 +7,9 @@ import configController from '../../../configController'
 
 export default function genericEndpoint(app: Application, context: typeof configController, method: 'get' | 'post', apiEndpointName: string, configKey: string, { errorMessage }: { errorMessage: string }) {
   const endpointUrl = `${context.config.apisConfigurationEndpointsPrefix}/${apiEndpointName}`
-  logger.debug('setup').yarn.whisper(`AIM: endpoint: [${method}] "${endpointUrl}"`)
+  logger.debug('setup').yarn.whisper(`endpoint: [${method}] "${endpointUrl}"`)
   app[method](endpointUrl, bodyParser.json(), (req: Request, res: Response) => {
-    logger.debug('configEndpoints').yarn.whisper(`AIM: ${apiEndpointName} config request | session: ${req?.session?.id || null}`)
+    logger.debug('configEndpointsDebug').yarn.whisper(`${apiEndpointName} config request | session: ${req?.session?.id || null}`)
     const enabled = req.body.enabled
     if (typeof enabled === 'undefined') res.status(400).send({ message: errorMessage })
     context.setSessionConfig(req, configKey, enabled)

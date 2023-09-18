@@ -1,15 +1,20 @@
 import type { AimConfig } from '../../../src/types/config.types'
 const config: Partial<AimConfig> = {
   debug: {
+    general: true,
     setup: true,
     cache: false,
+    cacheDebug: true,
     config: true,
     autofix: false,
     onProxyRequest: true,
-    onProxyError: false,
+    onProxyRequestDebug: true,
     onProxyResponse: true,
+    onProxyResponseDebug: true,
+    onProxyError: false,
     configEndpoints: false,
-    cacheController: true,
+    configEndpointsDebug: true,
+    cacheController: false,
     fileInterface: false,
     scenarioList: true,
   },

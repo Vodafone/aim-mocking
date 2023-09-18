@@ -46,6 +46,7 @@ export default function server() {
         {
           collection,
           reporters: 'cli',
+          delayRequest: 500,
         },
         function (err) {
           if (err) {

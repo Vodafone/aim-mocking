@@ -145,12 +145,11 @@ ${chalk.gray(stringFill('- [FILL] -'))}`
 
   /**
    * Yarn success
-   * @param message
+   * @param title
    * @param values
    */
-  async success(message, ...values) {
-    let logOutput = `${stringFill('- [FILL] -')}
-${chalk.gray('[')} ${symbols.success} ${chalk.gray(']')} ${chalk.green('Success: ')} ${message}
+  async success(title, ...values) {
+    let logOutput = `${chalk.green(title)}
 ${stringFill('- [FILL] -')}`
     if (values.length) {
       logOutput += `
@@ -167,12 +166,11 @@ ${stringFill('- [FILL] -')}`
 
   /**
    * Yarn Failure
-   * @param message
+   * @param titile
    * @param values
    */
-  async failure(message, ...values) {
-    let logOutput = `${stringFill('- [FILL] -')}
-${chalk.gray('[')} ${symbols.error} ${chalk.gray(']')} ${chalk.red('Failure: ')} ${message}
+  async failure(titile, ...values) {
+    let logOutput = `${chalk.red(titile)}
 ${stringFill('- [FILL] -')}`
     if (values.length) {
       logOutput += `

@@ -1,20 +1,26 @@
 import { AimConfig } from '@vodafoneuk/aim-mocking'
 
-const debugAll = false
+const enableDebugLog = true
+const enableDetailedDebugLog = false
 
 export default {
   debug: {
-    setup: debugAll,
-    cache: debugAll,
-    config: debugAll,
-    autofix: debugAll,
-    onProxyRequest: debugAll,
-    onProxyError: debugAll,
-    onProxyResponse: debugAll,
-    configEndpoints: debugAll,
-    cacheController: debugAll,
-    fileInterface: debugAll,
-    scenarioList: debugAll,
+    general: true,
+    setup: enableDebugLog,
+    cache: enableDebugLog,
+    cacheDebug: enableDetailedDebugLog,
+    config: enableDebugLog,
+    autofix: enableDebugLog,
+    onProxyRequest: enableDebugLog,
+    onProxyRequestDebug: enableDetailedDebugLog,
+    onProxyResponse: enableDebugLog,
+    onProxyResponseDebug: enableDebugLog,
+    onProxyError: enableDetailedDebugLog,
+    configEndpoints: enableDebugLog,
+    configEndpointsDebug: enableDetailedDebugLog,
+    cacheController: enableDebugLog,
+    fileInterface: enableDetailedDebugLog,
+    scenarioList: enableDetailedDebugLog,
   },
   ignoredPaths: [],
   hashIgnoredReqBodyKeys: ['customerId', 'time'],

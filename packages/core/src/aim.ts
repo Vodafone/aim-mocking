@@ -21,7 +21,7 @@ class AimProxyMiddleware {
   middleware(app: Application, proxyConfig: AimConfig) {
     logger.yarn.appStart(() => 'AIM middleware')
     loggerSetup(proxyConfig)
-    logger.debug('setup').yarn.whisper('AIM: register middleware')
+    logger.debug('setup').yarn.whisper('register middleware')
     // Validate config
     configValidator(proxyConfig)
     // Initialize session store to handle user specific config sessions
@@ -34,7 +34,7 @@ class AimProxyMiddleware {
     cache.use(fileInterface)
     app.use(bodyParser.json())
     aimProxy.setupProxy(app)
-    logger.debug().yarn.whisper('AIM: register middleware: end')
+    logger.debug().yarn.whisper('register middleware: end')
   }
 }
 

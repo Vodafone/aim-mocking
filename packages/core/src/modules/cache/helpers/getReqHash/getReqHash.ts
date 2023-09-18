@@ -13,6 +13,6 @@ export default function getReqHash(req: FilteredRequest) {
   if (!isEmpty(req.body) || !isEmpty(req.query)) {
     hash = md5(JSON.stringify({ body: req.body, query: req.query })).substring(0, hashLength)
   }
-  logger.group('cache').yarn.whisper(`hash is: ${hash} | body: ${JSON.stringify(req.body)} | query: ${JSON.stringify(req.query)}`)
+  logger.debug('general').yarn.whisper(`hash is: ${hash} | body: ${JSON.stringify(req.body)} | query: ${JSON.stringify(req.query)}`)
   return hash
 }
