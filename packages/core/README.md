@@ -183,7 +183,7 @@ Below are not default values! If you are unsure of what each option does, please
 
   AimMiddleware(app, {
     ignoredPaths: [],
-    hashIgnoredReqBodyKeys: ['customerId', 'time'],
+    hashIgnoredReqBodyKeys: ['customerId', 'time', 'customer.name', 'customer.type'],
     hashIgnoredReqQueryKeys: ['perpage'],
     hashIgnoredReqPathPatterns: [],
     rewriteMockPathName: (requestPath: string) => {

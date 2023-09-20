@@ -1,0 +1,10 @@
+{
+  "__cacheMeta": {
+    "filePath": "/Users/radoslaw.swiat/Projects/aim-mocking/packages/core/tests/__mockapi__/customer/GET/api-test-1-cc58677d.json",
+    "date": "20/09/2023 10:22:17",
+    "hash": {
+      "body": "{\"customer\":{\"test\":1}}",
+      "query": "{}"
+    }
+  }
+}
