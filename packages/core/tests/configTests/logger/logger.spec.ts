@@ -67,3 +67,4 @@ it('Should print only enabled logs', async () => {
 }, 10000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

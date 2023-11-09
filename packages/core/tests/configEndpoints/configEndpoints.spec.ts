@@ -90,3 +90,4 @@ describe('getScenariosList', () => {
 })
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

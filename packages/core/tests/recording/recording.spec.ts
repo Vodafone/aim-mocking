@@ -96,3 +96,4 @@ it('Should record mocks with ignored query keys', async () => {
 }, 100000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

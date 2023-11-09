@@ -204,6 +204,15 @@ Below are not default values! If you are unsure of what each option does, please
 
 ---
 
+## Testing
+
+Running `yarn nx test @vodafoneuk/aim-mocking` should run all tests for aim core
+Playground has some tests too, but the most important ones are in the core package.
+
+To write a new test go into packages/core/tests and modify .spec.ts files or create a new one.
+
+---
+
 ## Contributing
 
 - Fork the repository.

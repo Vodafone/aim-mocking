@@ -60,3 +60,4 @@ it('Should not call ignored paths', async () => {
 }, 100000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

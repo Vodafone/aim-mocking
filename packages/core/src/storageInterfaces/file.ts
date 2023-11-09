@@ -33,7 +33,7 @@ export default class FileInterface {
 
   extendMockFileWithFilePath(mockFilePath: string, data: MockData) {
     if (!data?.__cacheMeta) data.__cacheMeta = {}
-    data.__cacheMeta.filePath = mockFilePath
+    data.__cacheMeta.filePath = path.relative(process.cwd(), mockFilePath)
     return data
   }
 

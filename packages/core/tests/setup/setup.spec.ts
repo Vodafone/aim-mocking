@@ -71,3 +71,4 @@ it('Should skip interception as mocking and recording is not allowed at the same
 }, 10000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()
