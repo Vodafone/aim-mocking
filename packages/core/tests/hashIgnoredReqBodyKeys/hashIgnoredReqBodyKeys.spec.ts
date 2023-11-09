@@ -57,3 +57,4 @@ it('Should support nested hash ignored req body keys', async () => {
 }, 10000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

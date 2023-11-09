@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // @ts-nocheck
 /** *************************************************************************** */
 /** Import - test utilities                                                     */
@@ -7,11 +8,11 @@
 import * as loggerChecker from '../../testsUtils/loggerChecker/loggerChecker'
 import testsConfig from '../../testsUtils/config/config'
 import axiosAimConfigClient from '../../testsUtils/axiosAimConfigClient'
-import axiosApiClient from '../../testsUtils/axiosApiClient'
 import mockedServiceServer from '../../testsUtils/mockedServiceServer'
-import createMock from '../../testsUtils/createMock'
-import wait from '../../testsUtils/wait'
 import * as mockedServiceServerCtrl from '../../testsUtils/mockedServiceServerController'
+import axiosApiClient from '../../testsUtils/axiosApiClient'
+import wait from '../../testsUtils/wait'
+import createMock from '../../testsUtils/createMock'
 /** *************************************************************************** */
 /** Import - test configs                                                       */
 /** --------------------------------------------------------------------------- */
@@ -32,46 +33,26 @@ mockedServiceServerCtrl.bootstrap(server, testsConfig.cacheOutputDir)
 /** --------------------------------------------------------------------------- */
 /** Local utilities to help prepare and run tests                               */
 /** *************************************************************************** */
-beforeEach(() => {
-  loggerChecker.clear()
-})
-
 it('prepare', async () => {
-  process.env.LOGGER_MEMORY = 'true'
   await axiosAimConfigClient.initSession()
   await axiosAimConfigClient.post('enableRecording', { enabled: false })
-  await axiosAimConfigClient.post('enableMocking', { enabled: false })
+  await axiosAimConfigClient.post('enableMocking', { enabled: true })
+  await axiosAimConfigClient.post('setScenario', { scenario: 'customer' })
 })
 
-it('Should return root fallback mock', async () => {
+it('Should support nested hash ignored req body keys', async () => {
   server.mode = 200
-  await axiosAimConfigClient.post('enableRecording', { enabled: false })
-  await axiosAimConfigClient.post('enableMocking', { enabled: true })
   // Make call
-  createMock('__shared__', 'GET', 'api-test-1-000', {})
-  await axiosApiClient({ reqUrl: 'api/test/1' })
+  createMock('customer', 'GET', 'api-test-1-000', {})
+  const [err, res] = await axiosApiClient({ reqUrl: 'api/test/1' })
   await wait(500)
-  // Check app flow
-  expect(loggerChecker.exists('tests/__mockapi__/default/GET/api-test-1-000.json')).toBe(2)
-  expect(loggerChecker.exists('tests/__mockapi__/__shared__/GET/api-test-1-000.json')).toBe(4)
-  expect(loggerChecker.exists('fallback mock file exists')).toBe(1)
-  expect(loggerChecker.exists('cache served')).toBe(1)
-}, 20000)
-
-it('Should return nested fallback mock', async () => {
-  server.mode = 200
-  await axiosAimConfigClient.post('enableRecording', { enabled: false })
-  await axiosAimConfigClient.post('enableMocking', { enabled: true })
-  await axiosAimConfigClient.post('setScenario', { scenario: 'a/b/c/d' })
-  // Make call
-  createMock('a/b/__shared__', 'GET', 'api-test-1-000', {})
-  await axiosApiClient({ reqUrl: 'api/test/1' })
-  await wait(500)
-  // Check app flow
-  expect(loggerChecker.exists('tests/__mockapi__/a/b/c/d/GET/api-test-1-000.json')).toBe(2)
-  expect(loggerChecker.exists('tests/__mockapi__/a/b/__shared__/GET/api-test-1-000.json')).toBe(4)
-  expect(loggerChecker.exists('fallback mock file exists')).toBe(1)
-  expect(loggerChecker.exists('cache served')).toBe(1)
+  // Check that the mock has been found
+  expect(loggerChecker.exists('tests/__mockapi__/customer/GET/api-test-1-000.json')).toBe(4)
+  expect(loggerChecker.exists('The mock file not found')).toBe(0)
+  // Check mocked file meta content
+  expect(res.data.__cacheMeta.filePath).toBe('tests/__mockapi__/customer/GET/api-test-1-000.json')
+  expect(typeof res.data.__cacheMeta.date).toBe('string')
+  expect(typeof res.data.__cacheMeta.hash).toBe('object')
 }, 10000)
 
 mockedServiceServerCtrl.teardown(server)
