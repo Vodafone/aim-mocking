@@ -23,6 +23,7 @@ The main advantage of using AIM over other tools is that it does not require map
     - [Installation](#installation)
     - [Quick Start](#quick-start)
   - [Examples](#examples)
+  - [Testing](#testing)
   - [Contributing](#contributing)
   - [Releases](#releases)
   - [People](#people)
@@ -201,6 +202,14 @@ Below are not default values! If you are unsure of what each option does, please
     },
   })
 ```
+
+---
+
+## Testing
+Running `yarn nx test @vodafoneuk/aim-mocking` should run all tests for aim core
+Playground has some tests too, but most important ones are in the core package.
+
+To write a new test go into packages/core/tests and modify .spec.ts files or create a new one.
 
 ---
 
