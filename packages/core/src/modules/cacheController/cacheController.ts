@@ -1,14 +1,14 @@
 // @ts-nocheck
-import { Request, Response } from 'express'
 import logger from '@vodafoneuk/aim-mocking-logger'
+import { Request, Response } from 'express'
 
 import cache from '@modules/cache'
 import configController from '@modules/configController'
 
-import isSuccessStatus from './utils/isSuccessStatus'
-import wait from './utils/wait'
-import sendResponse from './utils/sendResponse'
 import extendMockResponse from './helpers/extendMockResponse'
+import isSuccessStatus from './utils/isSuccessStatus'
+import sendResponse from './utils/sendResponse'
+import wait from './utils/wait'
 
 export default async function cacheController(req: Request, res: Response, body: unknown) {
   const isRecordingEnabled = configController.getSessionConfig(req, 'recording')
@@ -65,8 +65,10 @@ export default async function cacheController(req: Request, res: Response, body:
   // return original response if no mock exists
   if (!cacheExists) {
     const expectedCacheFilePath = await cache.getCacheFilePath(req)
-    logger.debug('general').yarn.status('cache:retrieve', 'no cache exist', false)
-    if (expectedCacheFilePath) logger.debug('general').yarn.failure('The mock file not found:', 'To fix it create mock file in:', `${expectedCacheFilePath}.json`)
+    logger.group('general').yarn.status('cache:retrieve', 'no cache exist', false)
+    if (expectedCacheFilePath) {
+      logger.group('general').yarn.warn('cache:error', `Mock file not found, create in: ${expectedCacheFilePath}`)
+    }
     return sendResponse(res, body, 400)
   }
 
