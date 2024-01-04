@@ -67,7 +67,7 @@ export default async function cacheController(req: Request, res: Response, body:
     const expectedCacheFilePath = await cache.getCacheFilePath(req)
     logger.group('general').yarn.status('cache:retrieve', 'no cache exist', false)
     if (expectedCacheFilePath) {
-      logger.group('general').yarn.warn('cache:error', `Mock file not found, create in: ${expectedCacheFilePath}`)
+      logger.group('general').console.warn('cache:error', `Mock file not found, create in: ${expectedCacheFilePath}`)
     }
     return sendResponse(res, body, 400)
   }
