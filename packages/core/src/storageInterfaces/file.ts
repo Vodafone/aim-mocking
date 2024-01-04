@@ -1,12 +1,12 @@
 import path from 'path'
 
+import { MockData } from '@typesDef/mockData.types'
+import logger from '@vodafoneuk/aim-mocking-logger'
 import fs from 'fs-extra'
 import mkdirp from 'mkdirp'
-import logger from '@vodafoneuk/aim-mocking-logger'
-import { MockData } from '@typesDef/mockData.types'
 
-import getMocksRootPath from './utils/getMocksRootPath'
 import getMockFileFullPath from './utils/getMockFileFullPath'
+import getMocksRootPath from './utils/getMocksRootPath'
 
 export default class FileInterface {
   exists(mockRelativePath: string) {
@@ -17,6 +17,7 @@ export default class FileInterface {
     try {
       return fs.existsSync(mockFilePath)
     } catch (err) {
+      logger.debug('fileInterface').yarn.whisper(`not found: ${mockFilePath}`)
       return false
     }
   }
