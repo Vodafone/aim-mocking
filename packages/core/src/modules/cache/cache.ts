@@ -1,9 +1,9 @@
-import type { Request } from 'express'
 import logger from '@vodafoneuk/aim-mocking-logger'
+import type { Request } from 'express'
 
-import getCacheStorageKey from './helpers/getCacheStorageKey'
-import getCacheStorageFallbackKey from './helpers/getCacheStorageFallbackKey'
 import extendCacheData from './helpers/extendCacheData'
+import getCacheStorageFallbackKey from './helpers/getCacheStorageFallbackKey'
+import getCacheStorageKey from './helpers/getCacheStorageKey'
 
 import { MockData } from '@typesDef/mockData.types'
 
@@ -37,6 +37,9 @@ export class Cache {
     if (cacheExists) {
       logger.debug('cache').yarn.whisper(`mock file exists: ${cacheStorageKey.scenarioFilePath}`)
       return true
+    } else {
+      const expectedCacheFilePath = await this.getCacheFilePath(req);
+      logger.debug("cache").yarn.failure(`mock file not found!: ${expectedCacheFilePath}.json`);
     }
 
     // Try shared fallback resolution
