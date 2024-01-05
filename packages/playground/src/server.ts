@@ -3,7 +3,7 @@ import express from 'express'
 import proxy from 'express-http-proxy'
 import open from 'open'
 
-import AimMiddleware from '@vodafoneuk/lib-web-aim'
+import AimMiddleware from '@vodafoneuk/aim-mocking'
 import aimConfig from './aim.config'
 
 import collection from './AIM.postman_collection.json' assert { type: 'json' }
@@ -46,6 +46,7 @@ export default function server() {
         {
           collection,
           reporters: 'cli',
+          delayRequest: 500,
         },
         function (err) {
           if (err) {

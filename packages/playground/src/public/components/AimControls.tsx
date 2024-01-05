@@ -4,7 +4,6 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 
 import * as Styles from './AimControls.styles'
-import { Button, Header } from './AimControls.styles'
 
 export default function AimControls() {
   // Get AIM mocking status

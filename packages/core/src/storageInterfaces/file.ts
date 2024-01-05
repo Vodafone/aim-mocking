@@ -1,12 +1,12 @@
 import path from 'path'
 
+import { MockData } from '@typesDef/mockData.types'
+import logger from '@vodafoneuk/aim-mocking-logger'
 import fs from 'fs-extra'
 import mkdirp from 'mkdirp'
-import logger from '@vodafoneuk/lib-aim-logger'
-import { MockData } from '@typesDef/mockData.types'
 
-import getMocksRootPath from './utils/getMocksRootPath'
 import getMockFileFullPath from './utils/getMockFileFullPath'
+import getMocksRootPath from './utils/getMocksRootPath'
 
 export default class FileInterface {
   exists(mockRelativePath: string) {
@@ -17,6 +17,7 @@ export default class FileInterface {
     try {
       return fs.existsSync(mockFilePath)
     } catch (err) {
+      logger.console.error(`not found: ${mockFilePath}.json`)
       return false
     }
   }
@@ -31,12 +32,18 @@ export default class FileInterface {
     return fs.copySync(getMockFileFullPath(rootDir, from), getMockFileFullPath(rootDir, to))
   }
 
+  extendMockFileWithFilePath(mockFilePath: string, data: MockData) {
+    if (!data?.__cacheMeta) data.__cacheMeta = {}
+    data.__cacheMeta.filePath = path.relative(process.cwd(), mockFilePath)
+    return data
+  }
+
   get(mockRelativePath: string): MockData {
     const rootDir = getMocksRootPath()
     const mockFilePath = getMockFileFullPath(rootDir, mockRelativePath)
     mkdirp.sync(path.dirname(mockFilePath))
     if (fs.existsSync(mockFilePath)) {
-      return JSON.parse(fs.readFileSync(mockFilePath, 'utf-8'))
+      return this.extendMockFileWithFilePath(mockFilePath, JSON.parse(fs.readFileSync(mockFilePath, 'utf-8')))
     }
     return null
   }

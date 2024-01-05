@@ -1,6 +1,6 @@
 import type { Application } from 'express'
 import bodyParser from 'body-parser'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import type { AimConfig } from '@typesDef/config.types'
 
@@ -15,14 +15,13 @@ import loggerSetup from './modules/loggerSetup'
 
 /**
  * Aim proxy middleware
- * - for webpack-dev-server proxy usage
- * - should work with express proxy
+ * Main entry point of the AIM proxy middleware
  */
 class AimProxyMiddleware {
   middleware(app: Application, proxyConfig: AimConfig) {
     logger.yarn.appStart(() => 'AIM middleware')
     loggerSetup(proxyConfig)
-    logger.debug('setup').yarn.whisper('AIM: register middleware')
+    logger.debug('setup').yarn.whisper('register middleware')
     // Validate config
     configValidator(proxyConfig)
     // Initialize session store to handle user specific config sessions
@@ -35,7 +34,7 @@ class AimProxyMiddleware {
     cache.use(fileInterface)
     app.use(bodyParser.json())
     aimProxy.setupProxy(app)
-    logger.debug().yarn.whisper('AIM: register middleware: end')
+    logger.debug().yarn.whisper('register middleware: end')
   }
 }
 

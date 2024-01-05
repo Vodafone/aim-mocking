@@ -47,13 +47,17 @@ it('Should not call ignored paths', async () => {
   // Make calls for aim to create mocks
   await axiosApiClient({ reqUrl: 'api/test/ignoreAll/1' })
   await axiosApiClient({ reqUrl: 'api/test/ignoreAll/a/b/c/1' })
-  await axiosApiClient({ reqUrl: 'api/test/ignoreSlash' })
+  await axiosApiClient({ reqUrl: 'api/test/ignoreSlash/2/3' })
   await axiosApiClient({ reqUrl: 'api/test/ignoreSlash/1' })
+  await axiosApiClient({ reqUrl: 'api/test/ignoreSlash' })
   // Check if path was excluded
-  expect(loggerChecker.exists('AIM: isExcludedPath: ignoreAll excluded')).toBe(4)
-  expect(loggerChecker.exists('AIM: isExcludedPath: ignoreSlash/ excluded')).toBe(2)
+  expect(loggerChecker.exists('path excluded | /api/test/ignoreSlash/1')).toBe(1)
+  expect(loggerChecker.exists('path excluded | /api/test/ignoreSlash/2/3')).toBe(1)
+  expect(loggerChecker.exists('path excluded | /api/test/ignoreAll/a/b/c/1')).toBe(1)
+  expect(loggerChecker.exists('path excluded | /api/test/ignoreAll/1')).toBe(1)
   // Check if "ignoreSlash" without slash was not excluded
   expect(loggerChecker.exists('GET/api-test-ignoreSlash-000.json'))
 }, 100000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

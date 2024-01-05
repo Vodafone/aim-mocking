@@ -20,7 +20,7 @@ Package version: 1.0.4
 License: MIT 
 -------------------------------- 
 Package: regenerator-runtime 
-Package version: 0.13.9 
+Package version: 0.13.11 
 License: MIT 
 
 
@@ -165,7 +165,7 @@ THE SOFTWARE.
 
 -------------------------------- 
 Package: regenerator-runtime 
-Package version: 0.13.9 
+Package version: 0.13.11 
 License: MIT 
 MIT License
 

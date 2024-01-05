@@ -1,9 +1,9 @@
+import logger from '@vodafoneuk/aim-mocking-logger'
 import type { Request } from 'express'
-import logger from '@vodafoneuk/lib-aim-logger'
 
-import getCacheStorageKey from './helpers/getCacheStorageKey'
-import getCacheStorageFallbackKey from './helpers/getCacheStorageFallbackKey'
 import extendCacheData from './helpers/extendCacheData'
+import getCacheStorageFallbackKey from './helpers/getCacheStorageFallbackKey'
+import getCacheStorageKey from './helpers/getCacheStorageKey'
 
 import { MockData } from '@typesDef/mockData.types'
 
@@ -35,8 +35,11 @@ export class Cache {
     const cacheStorageKey = getCacheStorageKey(req)
     const cacheExists = this.storageInterface.exists(cacheStorageKey.scenarioFilePath)
     if (cacheExists) {
-      logger.debug('cache').yarn.whisper(`exists: ${cacheStorageKey.scenarioFilePath}`)
+      logger.debug('cache').yarn.whisper(`mock file exists: ${cacheStorageKey.scenarioFilePath}`)
       return true
+    } else {
+      const expectedCacheFilePath = await this.getCacheFilePath(req);
+      logger.console.error(`mock file not found!: ${expectedCacheFilePath}.json`);
     }
 
     // Try shared fallback resolution
@@ -44,7 +47,7 @@ export class Cache {
     if (cacheStorageFallbackKey) {
       const cacheFallbackExists = this.storageInterface.exists(cacheStorageFallbackKey)
       if (cacheFallbackExists) {
-        logger.debug('cache').yarn.whisper(`exists: fallback: ${cacheStorageFallbackKey}`)
+        logger.debug('cache').yarn.whisper(`fallback mock file exists: ${cacheStorageFallbackKey}`)
         return true
       }
     }
@@ -57,14 +60,20 @@ export class Cache {
     const cacheStorageKey = getCacheStorageKey(req)
     const cacheExists = this.storageInterface.exists(cacheStorageKey.scenarioFilePath)
     if (cacheExists) {
-      return this.storageInterface.get(cacheStorageKey.scenarioFilePath)
+      const mockFileContent = this.storageInterface.get(cacheStorageKey.scenarioFilePath)
+      logger.debug('general').yarn.whisper(`serve mock file: ${mockFileContent.__cacheMeta.filePath}`)
+      logger.debug('general').yarn.success('Returned mocked file:', mockFileContent.__cacheMeta.filePath)
+      return mockFileContent
     }
     // Try shared fallback resolution
     const cacheStorageFallbackKey = await getCacheStorageFallbackKey(cacheStorageKey.filePath, cacheStorageKey.scenarioFilePath)
     if (cacheStorageFallbackKey) {
       const cacheFallbackExists = this.storageInterface.exists(cacheStorageFallbackKey)
       if (cacheFallbackExists) {
-        return this.storageInterface.get(cacheStorageFallbackKey)
+        const mockFileContent = this.storageInterface.get(cacheStorageFallbackKey)
+        logger.debug('general').yarn.whisper(`serve mock file: ${mockFileContent.__cacheMeta.filePath}`)
+        logger.debug('general').yarn.success('Returned mocked file:', mockFileContent.__cacheMeta.filePath)
+        return mockFileContent
       }
     }
   }

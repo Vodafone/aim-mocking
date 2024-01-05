@@ -1,4 +1,4 @@
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import { AimConfig } from '@typesDef/config.types'
 
@@ -8,7 +8,7 @@ import validatorApisConfigurationEndpointsPrefix from './validators/apisConfigur
 import { ConfigError } from './configValidator.types'
 
 export default function configValidator(config: AimConfig) {
-  logger.debug('setup').yarn.whisper('AIM: validate config')
+  logger.debug('setup').yarn.whisper('validate config')
   let errors: ConfigError[] = []
   // Run validators
   errors.push(validatorHashIgnoredReqPathPatterns(config))

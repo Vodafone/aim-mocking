@@ -4,7 +4,7 @@ import { Request, Response, Application } from 'express'
 // @ts-ignore
 import { walk } from '@root/walk'
 
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import type configController from '../../../configController'
 
@@ -17,7 +17,7 @@ import { NodeTree } from './getScenariosList.endpoint.types'
 export default function getScenariosList(app: Application, context: typeof configController) {
   const method = 'get'
   const endpointUrl = `${context.config.apisConfigurationEndpointsPrefix}/getScenariosList`
-  logger.debug('setup').yarn.whisper(`AIM: endpoint: [${method}] "${endpointUrl}"`)
+  logger.debug('setup').yarn.whisper(`endpoint: [${method}] "${endpointUrl}"`)
   const storageInterfaceRootPath = path.resolve(process.cwd(), context.config.storageInterfaceRootPath)
   app[method](endpointUrl, async (req: Request, res: Response) => {
     const allMockPaths: string[] = []

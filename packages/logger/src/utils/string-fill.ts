@@ -47,8 +47,8 @@ export function postStringFill(string) {
         .split(EOL)
         .map((line) => {
           const strippedLine = ansiStrip(line)
-          while (line.match('-') && strippedLine.length > config.systemCfg.consoleLineLength) {
-            line = line.replace('-', '')
+          while (line.match('--') && strippedLine.length > config.systemCfg.consoleLineLength) {
+            line = line.replace('--', '')
           }
           return line
         })

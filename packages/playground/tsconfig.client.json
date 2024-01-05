@@ -4,11 +4,13 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
-    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
     "preserveConstEnums": true,
-    "target": "es5"
+    "target": "es6"
   },
   "include": ["src/**/*"]
 }

@@ -2,7 +2,7 @@ import { Application, Request } from 'express'
 import merge from 'lodash/merge.js'
 import defaultAimConfig from '@config/defaultAimConfig'
 import type { AimConfig } from '@typesDef/config.types'
-import logger from '@vodafoneuk/lib-aim-logger'
+import logger from '@vodafoneuk/aim-mocking-logger'
 
 import sessionStore from '../sessionStore'
 
@@ -21,9 +21,9 @@ export class ConfigController {
   config: AimConfig = defaultAimConfig
 
   updateConfig(aimConfig: AimConfig) {
-    logger.debug('setup').yarn.whisper('AIM: update config')
+    logger.debug('setup').yarn.whisper('update config')
     this.config = merge({}, this.config, aimConfig)
-    logger.debug('config').yarn.whisper(JSON.stringify(this.config, null, 2))
+    logger.debug('setup').yarn.whisper(JSON.stringify(this.config, null, 2))
   }
 
   setSessionConfig(req: Request, key: string, value: string | boolean | number) {
@@ -35,7 +35,7 @@ export class ConfigController {
   }
 
   setupConfigEndpoints(app: Application) {
-    logger.debug('setup').yarn.whisper('AIM: setup config endpoints')
+    logger.debug('setup').yarn.whisper('setup config endpoints')
     endpointHealth(app, this)
     enableMockingEndpoint(app, this)
     enableForceMocking(app, this)

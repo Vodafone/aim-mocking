@@ -55,8 +55,8 @@ it('Should skip interception since mocking and recording are disabled', async ()
   server.mode = 200
   // Make call
   await axiosApiClient({ reqUrl: 'api/test/1' })
-  expect(loggerChecker.exists('AIM: incoming request | url: /api/test/1')).toBe(1)
-  expect(loggerChecker.exists('AIM mocking and recording are disabled')).toBe(1)
+  expect(loggerChecker.exists('incoming request | /api/test/1')).toBe(1)
+  expect(loggerChecker.exists('AIM disabled mocking and recording are disabled')).toBe(1)
 }, 10000)
 
 it('Should skip interception as mocking and recording is not allowed at the same time', async () => {
@@ -66,8 +66,9 @@ it('Should skip interception as mocking and recording is not allowed at the same
 
   // Make call
   await axiosApiClient({ reqUrl: 'api/test/1' })
-  expect(loggerChecker.exists('AIM: incoming request | url: /api/test/1')).toBe(1)
+  expect(loggerChecker.exists('incoming request | /api/test/1')).toBe(1)
   expect(loggerChecker.exists('AIM DISABLED - mocking and recording cannot be enabled at the same time')).toBe(1)
 }, 10000)
 
 mockedServiceServerCtrl.teardown(server)
+mockedServiceServerCtrl.clean()

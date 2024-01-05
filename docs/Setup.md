@@ -12,14 +12,14 @@ Make sure to install two packages: AIM and Logger.
 Logger is a custom logger built specifically for AIM. It was split from the core to allow for future removal or replacement.
 
 ```
-yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
+yarn add @vodafoneuk/aim-mocking @vodafoneuk/aim-mocking-logger
 ```
 
 ## Implement into express app
 ------
 
 ```
-import Aim from '@vodafoneuk/lib-web-aim'
+import Aim from '@vodafoneuk/aim-mocking'
 
 import express from 'express'
 

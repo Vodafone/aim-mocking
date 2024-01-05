@@ -26,9 +26,9 @@ export default function Population() {
   return (
     <Styles.Container>
       <p>Example list of api results.</p>
-      <p>When AIM mocking is enabled it will load real api response</p>
+      <p>When AIM mocking is disabled it will load real api response</p>
       <p>
-        When AIM mocking is <strong>disabled</strong> it will use file mock from here: <i>"packages/playground/__mockapi__/default/GET/population-api-data-4c1a80fd.json"</i>
+        When AIM mocking is <strong>enabled</strong> it will use file mock from here: <i>"packages/playground/__mockapi__/default/GET/population-api-data-4c1a80fd.json"</i>
       </p>
       <p>For more examples please check AIM.postman_collection.json which you can load into postman and play with playground server.</p>
       <Styles.Items>

@@ -12,12 +12,13 @@ export class SessionStore {
   setup(app: Application) {
     app.use(
       expressSession({
-        secret: 'vodafone',
+        secret: 'aim',
         saveUninitialized: true,
         resave: false,
         store: expressSessionStore.createSessionStore({
           type: 'inmemory',
           host: 'localhost',
+          // TODO: add support for different session ports
           port: 8000,
         }),
       }),

@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    name: Publish
+    name: Quality check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
         run: yarn install
 
       - name: Run [all] prettier check
-        run: yarn prettier --check 'packages/**/*.(ts|tsx|json)'
+        run: yarn prettier --check 'packages/**/*.(ts|tsx)'
 
       - name: Run [all] eslint check
         run: yarn eslint --ext .ts,.tsx packages
@@ -29,4 +29,4 @@ jobs:
         run: yarn nx run-many --target=build
 
       - name: Run [core] test check
-        run: yarn nx test @vodafoneuk/lib-web-aim
+        run: yarn nx test @vodafoneuk/aim-mocking

@@ -1,861 +1,1115 @@
 {
-  "info": {
-    "_postman_id": "bdfa3c7b-62c8-47ed-932d-93e257ac1e3b",
-    "name": "AIM",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "1986296"
-  },
-  "item": [
-    {
-      "name": "Skip AIM",
-      "item": [
-        {
-          "name": "Config: Disable Mocking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = false\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(false)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableMocking",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableMocking"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: Disable Recording",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = false\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(false)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableRecording",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableRecording"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Make Second Mocked",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Body to have data length more then 1\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.data.length).to.above(1)",
-                  "});",
-                  "",
-                  "pm.test(\"Body to not have __cacheMeta\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.__cacheMeta).to.undefined",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disabledSystemHeaders": {
-              "accept": true
-            }
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "api", "data"],
-              "query": [
-                {
-                  "key": "drilldowns",
-                  "value": "Nation"
-                },
-                {
-                  "key": "measures",
-                  "value": "Population"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Recording",
-      "item": [
-        {
-          "name": "Config: Disable Mocking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = false\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(false)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableMocking",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableMocking"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: Enable Recording",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = true\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(true)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": true\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableRecording",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableRecording"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: SetScenario",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have scenario = default\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.scenario).to.eq(\"pages/journey\")", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"scenario\": \"pages/journey\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/setScenario",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "setScenario"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Make Second Mocked",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Body to have data length more then 1\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.data.length).to.above(1)",
-                  "});",
-                  "",
-                  "pm.test(\"Body to not have __cacheMeta\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.__cacheMeta).to.not.undefined",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disabledSystemHeaders": {
-              "accept": true
-            }
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "api", "data"],
-              "query": [
-                {
-                  "key": "drilldowns",
-                  "value": "Nation"
-                },
-                {
-                  "key": "measures",
-                  "value": "Population"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Mocking",
-      "item": [
-        {
-          "name": "Config: Enable Mocking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = true\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(true)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": true\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableMocking",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableMocking"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: Disable Recording",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = false\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(false)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableRecording",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableRecording"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: SetScenario",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have scenario = default\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.scenario).to.eq(\"pages/journey\")", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"scenario\": \"pages/journey\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/setScenario",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "setScenario"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Make Mocked request",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Body to have data length more then 1\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.data.length).to.above(1)",
-                  "});",
-                  "",
-                  "pm.test(\"Body to have __cacheMeta\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.__cacheMeta).to.not.undefined",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "api", "data"],
-              "query": [
-                {
-                  "key": "drilldowns",
-                  "value": "Nation"
-                },
-                {
-                  "key": "measures",
-                  "value": "Population"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Mocking with ignored body and query params",
-      "item": [
-        {
-          "name": "Config: Enable Mocking",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = true\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(true)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": true\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableMocking",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableMocking"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: Disable Recording",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have value = false\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.value).to.eq(false)", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"enabled\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/enableRecording",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "enableRecording"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Config: SetScenario",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": ["pm.test(\"Body to have scenario = pages/journey\", function () {", "    const body = JSON.parse(pm.response.text())", "    pm.expect(body.scenario).to.eq(\"pages/journey\")", "});"],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"scenario\": \"pages/journey\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/AIM_API/setScenario",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["AIM_API", "setScenario"]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Make Mocked request with ignored body \"time\"",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Body to have data length more then 1\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.data.length).to.above(1)",
-                  "});",
-                  "",
-                  "pm.test(\"Body to have __cacheMeta\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.__cacheMeta).to.not.undefined",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"time\": {{$timestamp}}\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "api", "data"],
-              "query": [
-                {
-                  "key": "drilldowns",
-                  "value": "Nation"
-                },
-                {
-                  "key": "measures",
-                  "value": "Population"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        },
-        {
-          "name": "Make Mocked request with ignored query \"perpage\"",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"Body to have data length more then 1\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.data.length).to.above(1)",
-                  "});",
-                  "",
-                  "pm.test(\"Body to have __cacheMeta\", function () {",
-                  "    const body = JSON.parse(pm.response.text())",
-                  "    pm.expect(body.__cacheMeta).to.not.undefined",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "type": "text"
-              }
-            ],
-            "url": {
-              "raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population&perpage=5",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "3000",
-              "path": ["api", "api", "data"],
-              "query": [
-                {
-                  "key": "drilldowns",
-                  "value": "Nation"
-                },
-                {
-                  "key": "measures",
-                  "value": "Population"
-                },
-                {
-                  "key": "perpage",
-                  "value": "5"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "name": "session",
-              "originalRequest": {
-                "method": "GET",
-                "header": []
-              },
-              "_postman_previewlanguage": null,
-              "header": null,
-              "cookie": [],
-              "body": null
-            }
-          ]
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "555a5608-0dd4-49da-9348-e51739012aef",
+		"name": "AIM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1986296",
+		"_collection_link": "https://dark-capsule-264265.postman.co/workspace/Ecare~7ad93745-4ae5-4678-a6a1-e1285b7c592e/collection/1986296-555a5608-0dd4-49da-9348-e51739012aef?action=share&source=collection_link&creator=1986296"
+	},
+	"item": [
+		{
+			"name": "Skip AIM",
+			"item": [
+				{
+					"name": "Config: Disable Mocking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = false\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(false)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableMocking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableMocking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: Disable Recording",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = false\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(false)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableRecording",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableRecording"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make Second Mocked",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have data length more then 1\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.data.length).to.above(1)",
+									"});",
+									"",
+									"pm.test(\"Body to not have __cacheMeta\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.__cacheMeta).to.undefined",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Population"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Recording",
+			"item": [
+				{
+					"name": "Config: Disable Mocking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = false\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(false)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableMocking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableMocking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: Enable Recording",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = true\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(true)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableRecording",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableRecording"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: SetScenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have scenario = default\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.scenario).to.eq(\"pages/journey\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"scenario\": \"pages/journey\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/setScenario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"setScenario"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make Second Mocked",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have data length more then 1\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.data.length).to.above(1)",
+									"});",
+									"",
+									"pm.test(\"Body to not have __cacheMeta\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.__cacheMeta).to.not.undefined",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Population"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mocking",
+			"item": [
+				{
+					"name": "Config: Enable Mocking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = true\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(true)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableMocking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableMocking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: Disable Recording",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = false\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(false)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableRecording",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableRecording"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: SetScenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have scenario = default\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.scenario).to.eq(\"pages/journey\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"scenario\": \"pages/journey\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/setScenario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"setScenario"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make Mocked request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have data length more then 1\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.data.length).to.above(1)",
+									"});",
+									"",
+									"pm.test(\"Body to have __cacheMeta\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.__cacheMeta).to.not.undefined",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Population"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make non existing mock request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Request status to equal Bad Request\", function () {",
+									"    pm.expect(pm.response.status).to.eq(\"Bad Request\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Test"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Mocking with ignored body and query params",
+			"item": [
+				{
+					"name": "Config: Enable Mocking",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = true\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(true)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableMocking",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableMocking"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: Disable Recording",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have value = false\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.value).to.eq(false)",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enabled\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/enableRecording",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"enableRecording"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Config: SetScenario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have scenario = pages/journey\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.scenario).to.eq(\"pages/journey\")",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"scenario\": \"pages/journey\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/AIM_API/setScenario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"AIM_API",
+								"setScenario"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make Mocked request with ignored body \"time\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have data length more then 1\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.data.length).to.above(1)",
+									"});",
+									"",
+									"pm.test(\"Body to have __cacheMeta\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.__cacheMeta).to.not.undefined",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"time\": {{$timestamp}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Population"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Make Mocked request with ignored query \"perpage\"",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Body to have data length more then 1\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.data.length).to.above(1)",
+									"});",
+									"",
+									"pm.test(\"Body to have __cacheMeta\", function () {",
+									"    const body = JSON.parse(pm.response.text())",
+									"    pm.expect(body.__cacheMeta).to.not.undefined",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/api/data?drilldowns=Nation&measures=Population&perpage=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"api",
+								"data"
+							],
+							"query": [
+								{
+									"key": "drilldowns",
+									"value": "Nation"
+								},
+								{
+									"key": "measures",
+									"value": "Population"
+								},
+								{
+									"key": "perpage",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "session",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
 }

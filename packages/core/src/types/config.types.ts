@@ -7,14 +7,19 @@ export interface AimProxyConfig {
 export interface AimConfig {
   /** Debug options */
   debug?: {
+    general?: boolean
     setup?: boolean
     cache?: boolean
+    cacheDebug?: boolean
     config?: boolean
     autofix?: boolean
     onProxyRequest?: boolean
+    onProxyRequestDebug?: boolean
     onProxyError?: boolean
     onProxyResponse?: boolean
+    onProxyResponseDebug?: boolean
     configEndpoints?: boolean
+    configEndpointsDebug?: boolean
     cacheController?: boolean
     fileInterface?: boolean
     scenarioList?: boolean

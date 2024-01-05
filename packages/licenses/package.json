@@ -1,12 +1,16 @@
 {
-  "name": "@vodafoneuk/lib-generate-licenses",
-  "version": "1.0.0",
+  "name": "@vodafoneuk/licenses-generator",
+  "version": "1.0.2",
   "description": "licenses generator",
   "author": "Radoslaw Swiat",
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "scope": "@vodafoneuk"
+  },
   "files": [
     "dist"
   ],
@@ -14,7 +18,7 @@
     "node": ">=18.13.0"
   },
   "scripts": {
-    "start": "nx build @vodafoneuk/lib-web-aim && yarn build && node dist/index",
+    "start": "nx build @vodafoneuk/aim-mocking && yarn build && node dist/index",
     "build": "rollup -c"
   },
   "exports": {

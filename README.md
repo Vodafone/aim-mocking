@@ -23,6 +23,7 @@ The main advantage of using AIM over other tools is that it does not require map
     - [Installation](#installation)
     - [Quick Start](#quick-start)
   - [Examples](#examples)
+  - [Testing](#testing)
   - [Contributing](#contributing)
   - [Releases](#releases)
   - [People](#people)
@@ -86,7 +87,9 @@ AIM is a NX monorepo that includes three packages:
 
 ### Playground
 
-Running `yarn start` will execute tests and scenarios that showcase how AIM works. You can also import these scenarios into your Postman.
+Running `yarn start:playground` will execute tests and scenarios that showcase how AIM works. You can also import these scenarios into your Postman.
+
+You can import `AIM.postman_collection.json` in Postman while running the playground to experiment with AIM API via Postman.
 
 ---
 
@@ -95,20 +98,20 @@ Running `yarn start` will execute tests and scenarios that showcase how AIM work
 ### Requirements
 
 - Node version >18.13.0
-- Both packages installed: `@vodafoneuk/lib-web-aim` and `@vodafoneuk/lib-aim-logger`
+- Both packages installed: `@vodafoneuk/aim-mocking` and `@vodafoneuk/aim-mocking-logger`
 
 ### Installation
 
 With npm:
 
 ```
-npm install @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
+npm install @vodafoneuk/aim-mocking @vodafoneuk/aim-mocking-logger
 ```
 
 With yarn:
 
 ```
-yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
+yarn add @vodafoneuk/aim-mocking @vodafoneuk/aim-mocking-logger
 ```
 
 ### Quick Start
@@ -116,7 +119,7 @@ yarn add @vodafoneuk/lib-web-aim @vodafoneuk/lib-aim-logger
 Implement into express app
 
 ```
-import Aim from '@vodafoneuk/lib-web-aim'
+import Aim from '@vodafoneuk/aim-mocking'
 
 import express from 'express'
 
@@ -199,6 +202,15 @@ Below are not default values! If you are unsure of what each option does, please
     },
   })
 ```
+
+---
+
+## Testing
+
+Running `yarn nx test @vodafoneuk/aim-mocking` should run all tests for aim core
+Playground has some tests too, but the most important ones are in the core package.
+
+To write a new test go into packages/core/tests and modify .spec.ts files or create a new one.
 
 ---
 
