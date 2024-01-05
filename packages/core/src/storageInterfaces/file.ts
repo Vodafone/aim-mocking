@@ -17,7 +17,7 @@ export default class FileInterface {
     try {
       return fs.existsSync(mockFilePath)
     } catch (err) {
-      logger.debug('fileInterface').yarn.whisper(`not found: ${mockFilePath}`)
+      logger.console.error(`not found: ${mockFilePath}.json`)
       return false
     }
   }

@@ -39,7 +39,7 @@ export class Cache {
       return true
     } else {
       const expectedCacheFilePath = await this.getCacheFilePath(req);
-      logger.debug("cache").yarn.failure(`mock file not found!: ${expectedCacheFilePath}.json`);
+      logger.console.error(`mock file not found!: ${expectedCacheFilePath}.json`);
     }
 
     // Try shared fallback resolution
